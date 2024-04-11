@@ -1,4 +1,3 @@
-<script type="text/javascript">  
 var btn = document.querySelector("div.area.done div.input-group-button");
 console.log(btn);
 function doLoad() {
@@ -14,4 +13,3 @@ function doLoad() {
 (function(){
     setTimeout(function(){doLoad();}, 5000)
 })();
-</script>  
