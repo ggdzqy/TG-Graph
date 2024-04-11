@@ -7,7 +7,7 @@ function doLoad() {
         var v = document.querySelector("input.input-sm").value;
         console.log(v);
         can.innerHTML = `<img width="360px" max-height="240px" src="${v}">` }
-    )
+        , false);
     console.log("add click ok");
 }
 (function(){
