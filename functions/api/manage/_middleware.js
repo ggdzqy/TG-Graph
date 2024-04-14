@@ -79,8 +79,8 @@ async function errorHandling(context) {
     if(typeof context.env.BASIC_USER == "undefined" || context.env.BASIC_USER == null || context.env.BASIC_USER == ""){
         return context.next();
     }else{
-        console.log("context.request.headers -> ")
-        console.log(context.request.headers)
+        console.log("context.request.headers -> ");
+        console.log(context.request.headers);
         if (context.request.headers.has('Authorization')) {
             // Throws exception when authorization fails.
             const { user, pass } = basicAuthentication(context.request);
