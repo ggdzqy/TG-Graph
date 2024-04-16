@@ -11,13 +11,20 @@ export async function onRequest(context) {
   context.request;
   const url = new URL(request.url);
 
+  const allowedDomains = env.ALLOWED_DOMAINS;
+  let Referer = request.headers.get('Referer') || "Referer";
+  let refererUrl = new URL(Referer);
+  if(!allowedDomains.includes(refererUrl.hostname)){
+      return Response.redirect("https://img.131213.xyz/asset/image/blocked.png", 302);
+  }
+
   const response = fetch("https://telegra.ph/" + url.pathname + url.search, {
     method: request.method,
     headers: request.headers,
     body: request.body,
   }).then(async (response) => {
-    console.log(response.ok); // true if the response status is 2xx
-    console.log(response.status); // 200
+    //console.log(response.ok); // true if the response status is 2xx
+    //console.log(response.status); // 200
     // fix: 304 not modified ListType Block can be displayed
     if (response.ok || (!response.ok && response.status === 304)) {
       // Referer header equal to the admin page
