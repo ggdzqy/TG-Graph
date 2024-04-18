@@ -54,10 +54,6 @@
               :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
               style="width: 100%">
               <el-table-column
-                label="name"
-                prop="name">
-              </el-table-column>
-              <el-table-column
                 label="preview"
                 prop="preview">
                 <template slot-scope="scope">
@@ -73,8 +69,11 @@
                     fit="cover"
                     lazy
                   />
-
                 </template>
+              </el-table-column>
+              <el-table-column
+                label="name"
+                prop="name">
               </el-table-column>
               <el-table-column
                 label="data"
@@ -97,22 +96,14 @@
                     placeholder="输入关键字搜索"/>
                 </template>
                 <template slot-scope="scope">
-                  <el-button 
-                  size="mini"
-                  type="success"
+                  <el-button size="mini" type="success"
                   @click="handleCopy(scope.row.name)">复制链接</el-button>
-                  <el-button
-                    size="mini"
-                    type="primary"
+                  <el-button size="mini" type="primary"
                     @click="handleWhite(scope.$index,scope.row.name)">白名单</el-button>
-                  <el-button
-                    size="mini"
-                    type="info"
+                  <el-button size="mini" type="info"
                     @click="handleBlock(scope.$index,scope.row.name)">黑名单</el-button>
-                  <el-button
-                    size="mini"
-                    type="danger"
-                    @click="handleDelete(scope.$index,scope.row.name)">删除</el-button>
+                  <el-button type="danger" icon="el-icon-delete"
+                    @click="handleDelete(scope.$index,scope.row.name)"></el-button>
                 </template>
               </el-table-column>
             </el-table>
