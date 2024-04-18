@@ -148,7 +148,7 @@
       handleBlock(index,key) {
         console.log(key);
         if (confirm("确认加入黑名单吗?")) {
-        console.log("Yes")
+        console.log("加入黑名单")
         var requestOptions = {
           method: 'GET',
           redirect: 'follow',
@@ -169,7 +169,7 @@
     handleDelete(index,key) {
         console.log(key);
         if (confirm("确认删除该条记录吗?")) {
-        console.log("Yes")
+        console.log("删除该条记录")
         var requestOptions = {
           method: 'GET',
           redirect: 'follow',
@@ -189,7 +189,7 @@
     handleWhite(index,key) {
       console.log(key);
       if (confirm("确认加入白名单吗?")) {
-      console.log("Yes")
+      console.log("加入白名单")
       var requestOptions = {
         method: 'GET',
         redirect: 'follow',
