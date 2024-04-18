@@ -28,8 +28,10 @@
         <el-main><el-row :gutter="12">
             <el-col :span="24">
               <el-card shadow="always">
-                <span>记录总数量: {{ Number }} </span>
-                <span> <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/></span>
+                <div style="display: flex;">记录总数量: {{ Number }} </div>
+                <div style="display: flex;">
+                  <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
+                </div>
               </el-card>
             </el-col>
             <!--<el-col :span="8">
