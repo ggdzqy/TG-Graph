@@ -15,7 +15,7 @@ export async function onRequest(context) {
   let Referer = request.headers.get('Referer') || "Referer";
   let refererUrl = new URL(Referer);
   if(!allowedDomains.includes(refererUrl.hostname)){
-      return Response.redirect("https://img.131213.xyz/asset/image/blocked.png", 302);
+      return Response.redirect("https://static-res.mixart.top/imgs/question.png", 302);
   }
 
   const response = fetch("https://telegra.ph/" + url.pathname + url.search, {
@@ -42,8 +42,8 @@ export async function onRequest(context) {
       } else {
         //check the record from kv
         const record = await env.img_url.getWithMetadata(params.id);
-        console.log("record");
-        console.log(record);
+        //console.log("record");
+        //console.log(record);
         if (record.metadata === null) {
         } else {
           //if the record is not null, redirect to the image
@@ -64,7 +64,7 @@ export async function onRequest(context) {
               return Response.redirect(url.origin + "/block-img.html", 302);
             } else {
               return Response.redirect(
-                "https://static-res.pages.dev/teleimage/img-block-compressed.png",
+                "https://static-res.mixart.top/imgs/question.png",
                 302
               );
             }
@@ -77,7 +77,7 @@ export async function onRequest(context) {
               return Response.redirect(url.origin + "/block-img.html", 302);
             } else {
               return Response.redirect(
-                "https://static-res.pages.dev/teleimage/img-block-compressed.png",
+                "https://static-res.mixart.top/imgs/question.png",
                 302
               );
             }
@@ -107,6 +107,7 @@ export async function onRequest(context) {
       var ss = String(today.getSeconds()).padStart(2, '0');     //获取当前秒数(0-59)
       var time_today = yyyy + '-' + MM + '-' + DD + ' ' + hh + ':' + mm + ':' + ss;
 
+      /////////////////////start ModerateContent check
       let apikey = env.ModerateContentApiKey;
 
       if (typeof apikey == "undefined" || apikey == null || apikey == "") {
@@ -119,7 +120,7 @@ export async function onRequest(context) {
         } else {
           //add image to kv
           await env.img_url.put(params.id, "", {
-            metadata: { ListType: "None", Label: "None", TimeStamp: time_today },
+            metadata: { ListType: "None", Tag: "None", TimeStamp: time_today },
           });
         }
       } else {
@@ -144,7 +145,7 @@ export async function onRequest(context) {
             await env.img_url.put(params.id, "", {
               metadata: {
                 ListType: "None",
-                Label: moderate_data.rating_label,
+                Tag: moderate_data.rating_label,
                 TimeStamp: time,
               },
             });
@@ -154,6 +155,7 @@ export async function onRequest(context) {
           }
         });
       }
+      ///////////////////end ModerateContent check
     }
     return response;
   });

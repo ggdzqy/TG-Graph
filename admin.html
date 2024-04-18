@@ -66,7 +66,7 @@
                   </video>
                   <el-image
                     v-else
-                    style="width: 100%; height: 100%;"
+                    style="width: 152px; height: 152px;"
                     :src="'/file/'+scope.row.name"
                     :zoom-rate="1.2"
                     :preview-src-list="['/file/'+scope.row.name]"
@@ -100,10 +100,7 @@
                   <el-button 
                   size="mini"
                   type="success"
-                  @click="handleCopy(scope.row.name)"
-                  >
-                    复制链接
-                  </el-button>
+                  @click="handleCopy(scope.row.name)">复制链接</el-button>
                   <el-button
                     size="mini"
                     type="primary"
@@ -112,7 +109,7 @@
                     size="mini"
                     type="info"
                     @click="handleBlock(scope.$index,scope.row.name)">黑名单</el-button>
-                    <el-button
+                  <el-button
                     size="mini"
                     type="danger"
                     @click="handleDelete(scope.$index,scope.row.name)">删除</el-button>
