@@ -105,7 +105,8 @@ export async function onRequest(context) {
       var hh =  String(today.getHours()).padStart(2, '0');       //获取当前小时数(0-23)
       var mm = String(today.getMinutes()).padStart(2, '0');     //获取当前分钟数(0-59)
       var ss = String(today.getSeconds()).padStart(2, '0');     //获取当前秒数(0-59)
-      var time_today = yyyy + '-' + MM + '-' + DD + ' ' + hh + ':' + mm + ':' + ss;
+      //var time_today = yyyy + '-' + MM + '-' + DD + ' ' + hh + ':' + mm + ':' + ss;
+      var time_today = yyyy + MM + DD + hh + mm + ss;
 
       /////////////////////start ModerateContent check
       let apikey = env.ModerateContentApiKey;
