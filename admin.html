@@ -13,10 +13,8 @@
          margin: auto;
          line-height: 60px;
          font-size: xx-large;
-         position: relative;
-     ">Dashboard
-     
-
+         position: relative;">
+         Dashboard
      <span style="
      position: absolute;
      right: 0px;
@@ -28,11 +26,14 @@
         <el-main><el-row :gutter="12">
             <el-col :span="24">
               <el-card shadow="always">
-                <div style="display: flex;" justify="space-between">
-                  <el-tag>记录总数量: {{ Number }} </el-tag>
-                  <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
+                <el-row>
+                  <el-col :span="6"><el-tag>记录总数量: {{ Number }} </el-tag></el-col>
+                  <el-col :span="12"><p></p></el-col>
+                  <el-col :span="6">
+                  <el-input v-model="search" size="middle" placeholder="输入关键字搜索"/>
                   <i slot="suffix" class="el-input__icon el-icon-search"></i></el-input>
-                </div>
+                  </el-col>
+                </el-row>>
               </el-card>
             </el-col>
             <!--<el-col :span="8">
