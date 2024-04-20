@@ -4,11 +4,11 @@
  * @returns {HTMLElement} 返回创建的按钮容器元素。
  */
 function createButtonContainer() {
-    document.querySelector("#_topbox").innerHTML = `<div id="kv" class="input-group" align="right"><div>Date:<input type="text" id="date" class="input-sm"></div><div>Tag:<input type="text" id="tag" class="input-sm"></div><div>Label:<input type="text" id="label" class="input-sm"></div><div>Name:<input type="text" readonly="readonly"></div><div><button id="btnsave" type="button">保存</button></div>`;
+    document.querySelector("container.footer").innerHTML = `<div id="kv" class="input-group" align="right"><div>Date:<input type="text" id="date" class="input-sm"></div><div>Tag:<input type="text" id="tag" class="input-sm"></div><div>Label:<input type="text" id="label" class="input-sm"></div><div>Name:<input type="text" readonly="readonly"></div><div><button id="btnsave" type="button">保存</button></div>`;
 }
 
 (function(){
-    document.querySelector("#__nuxt").innerHTML += `<div id="_topbox" style="display: flex; flex-direction: column; align-items: center; position: fixed; top: 50%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;">WAIT ...</div>`;
+    document.querySelector("body").innerHTML += `<div id="_topbox" style="display: flex; flex-direction: column; align-items: center; position: fixed; top: 50%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;">WAIT ...</div>`;
 
     const can = document.querySelector("div.area.done div.svg-wrapper.flex");
     const btn = document.querySelector("div.area.done div.input-group-button");
