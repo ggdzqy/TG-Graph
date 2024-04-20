@@ -25,6 +25,7 @@ function createButtonContainer() {
             window.alert(fullurl);
             document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<img id="kvimg" style="width:360px;max-height:360px;object-fit:contain;" src="${fullurl}">`;
         }, false);
-        console.log("set DOM")
+        console.log("set save")
     }, false);
+    console.log("set DOM")
 })();
