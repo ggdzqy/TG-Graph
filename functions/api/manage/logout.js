@@ -8,6 +8,6 @@ export async function onRequest(context) {
       next, // used for middleware or to fetch assets
       data, // arbitrary space for passing data between middlewares
     } = context;
-    return new Response('Logged out.', { status: 401 });
+    return new Response(`Logged out. <a href='/'> HOME </a>`, { status: 401 });
 
   }
