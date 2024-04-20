@@ -17,5 +17,5 @@ function doLoad() {
 (function(){
     const can = document.querySelector("div.area.done div.svg-wrapper.flex");
     const btn = document.querySelector("div.area.done div.input-group-button");
-    setTimeout(function(){doLoad();}, 5000)
+    setTimeout(function(){doLoad();}, 500)
 })();
