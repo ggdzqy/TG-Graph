@@ -8,7 +8,7 @@ function createButtonContainer() {
 }
 
 (function(){
-    document.querySelector("#__nuxt").innerHTML += `<div id="_topbox" style="display: flex; flex-direction: column; align-items: center; position: fixed; top: 50%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;"></div>`;
+    document.querySelector("#__nuxt").innerHTML += `<div id="_topbox" style="display: flex; flex-direction: column; align-items: center; position: fixed; top: 50%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;">WAIT ...</div>`;
 
     const can = document.querySelector("div.area.done div.svg-wrapper.flex");
     const btn = document.querySelector("div.area.done div.input-group-button");
@@ -24,8 +24,8 @@ function createButtonContainer() {
             let fullurl=`${url}?date=${kvdate}&tag=${kvtag}&label=${kvlabel}`;
             window.alert(fullurl);
             document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<img id="kvimg" style="width:360px;max-height:360px;object-fit:contain;" src="${fullurl}">`;
-        }, false);
+        });
         console.log("set save")
-    }, false);
+    });
     console.log("set DOM")
 })();
