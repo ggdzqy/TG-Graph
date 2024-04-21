@@ -127,10 +127,20 @@ export async function onRequest(context) {
           if(vtag==null||vtag==""){ vtag = "public"; }
           if(vlabel==null||vlabel==""){ vlabel = ""; }
 
-          //add image to kv
-          await env.img_url.put(params.id, "", {
-            metadata: { ListType: "None", Tag: `${vtag}`, TimeStamp: `${vdate}`, Label: `${vlabel}`},
-          });
+          const value = await env.img_url.getWithMetadata(params.id);
+          if ( typeof value == "undefined" || value == null || value == "" ) {
+            //add image to kv
+            await env.img_url.put(params.id, "", {
+              metadata: { ListType: "None", Tag: `${vtag}`, TimeStamp: `${vdate}`, Label: `${vlabel}`},
+            });
+          } else {
+            //modify kv
+            value.metadata.ListType = "None";
+            value.metadata.Tag = `${vtag}`;
+            value.metadata.TimeStamp = `${vdate}`;
+            value.metadata.Label = `${vlabel}`;
+            await env.img_url.put(params.id,"",{metadata: value.metadata});
+          }
         }
       } else {
         await fetch(
