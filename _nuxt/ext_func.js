@@ -12,7 +12,7 @@ function createButtonContainer() {
 
     //setTimeout(function(){doLoad();}, 500)
     document.querySelector("#op").addEventListener('click', function() {
-        document.querySelector("#_infobox").innerHTML = `<div id="kv" align="right"><div>Date:<input type="text" id="kvdate"></div><div>Tag:<input type="text" id="kvtag"></div><div>Label:<input type="text" id="kvlabel" size="50"></div><div>Name:<input id="kvname" type="text" readonly="readonly" size="50"></div><div><button id="kvsave" type="button">保存</button></div>`;
+        document.querySelector("#_infobox").innerHTML = `<div id="kv" align="right"><div>Name:<input id="kvname" type="text" readonly="readonly" size="35"></div><div>Date:<input type="text" id="kvdate" size="35"></div><div>Tag:<input type="text" id="kvtag" size="35"></div><div>Label:<input type="text" id="kvlabel" size="35"></div><div><button id="kvsave" type="button">保存</button></div>`;
         document.querySelector("#kvname").value = document.querySelector("input.input-sm").value.split("/file/")[1];
         document.querySelector("#kvsave").addEventListener("click", function() {
             let url = document.querySelector("input.input-sm").value;
@@ -20,6 +20,7 @@ function createButtonContainer() {
             let kvtag = document.querySelector("#kvtag").value;
             let kvlabel = document.querySelector("#kvlabel").value;
             let fullurl=`${url}?date=${kvdate}&tag=${kvtag}&label=${kvlabel}`;
+            document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = ""
             window.alert(fullurl);
             document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<img id="kvimg" style="width:360px;max-height:360px;object-fit:contain;" src="${fullurl}">`;
         });
