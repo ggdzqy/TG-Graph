@@ -127,7 +127,10 @@ export async function onRequest(context) {
           if(vtag==null||vtag==""){ vtag = "public"; }
           if(vlabel==null||vlabel==""){ vlabel = ""; }
 
-          const value = await env.img_url.getWithMetadata(params.id);
+          var value;
+          try {
+            value = await env.img_url.getWithMetadata(params.id);
+          } catch (error) { value = null; } 
           if ( typeof value == "undefined" || value == null || value == "" ) {
             //add image to kv
             await env.img_url.put(params.id, "", {
