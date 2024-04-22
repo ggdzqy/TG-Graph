@@ -7,17 +7,19 @@ function createButtonContainer() {
     document.querySelector("container.footer").innerHTML = `<div id="kv" class="input-group" align="right"><div>Date:<input type="text" id="date" class="input-sm"></div><div>Tag:<input type="text" id="tag" class="input-sm"></div><div>Label:<input type="text" id="label" class="input-sm"></div><div>Name:<input type="text" readonly="readonly"></div><div><button id="btnsave" type="button">保存</button></div>`;
 }
 
+
 (function(){
     document.querySelector("body").innerHTML += `<div id="_topbox" style="display: flex; flex-direction: column; align-items: center; position: fixed; top: 50%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;"><div id="_infobox">WAIT ...</div><div id="_opbox"><button id="op">刷新</button></div></div>`;
 
     //setTimeout(function(){doLoad();}, 500)
     document.querySelector("#op").addEventListener('click', function() {
-        document.querySelector("#_infobox").innerHTML = `<div id="kv" align="right"><div>Name:<input id="kvname" type="text" readonly="readonly" size="35" placeholder="name"></div><div>Date:<input type="text" id="kvdate" size="35" placeholder="date"></div><div>Tag:<input type="text" id="kvtag" size="35" placeholder="tag"></div><div>Label:<input type="text" id="kvlabel" size="35" placeholder="label"></div><div><button id="kvsave" type="button">保存</button></div>`;
+        document.querySelector("#_infobox").innerHTML = `<div class="kv" id="kv" align="right"><div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly"></div><div>Date:<input type="text" id="kvdate"></div><div>Tag:<input type="text" id="kvtag"></div><div>Label:<input type="text" id="kvlabel"></div><div><button id="kvsave" type="button">保存</button></div>`;
         document.querySelector("#kvname").value = document.querySelector("input.input-sm").value.split("/file/")[1];
         document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT:</div>`
-        document.querySelector("#kvdate").value = document.querySelector("#kvdate").getAttribute("placeholder");
-        document.querySelector("#kvtag").value = document.querySelector("#kvtag").getAttribute("placeholder");
-        document.querySelector("#kvlabel").value = document.querySelector("#kvlabel").getAttribute("placeholder");
+        //read cookie
+        document.querySelector("#kvdate").value = $.cookie('kvdate');
+        document.querySelector("#kvtag").value = $.cookie('kvtag');
+        document.querySelector("#kvlabel").value = $.cookie('kvlabel');
 
         document.querySelector("#kvsave").addEventListener("click", function() {
             let url = document.querySelector("input.input-sm").value;
@@ -29,9 +31,10 @@ function createButtonContainer() {
             var yes = confirm('你確定提交嗎？');
             if (yes) {
                 document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<img id="kvimg" style="width:360px;max-height:360px;object-fit:contain;" src="${fullurl}">`;
-                document.querySelector("#kvdate").setAttribute("placeholder", kvdate);
-                document.querySelector("#kvtag").setAttribute("placeholder",  kvtag);
-                document.querySelector("#kvlabel").setAttribute("placeholder",  kvlabel);
+                //set cookie
+                $.cookie('kvdate', kvdate, { expires: 7 });
+                $.cookie('kvtag', kvtag, { expires: 7 });
+                $.cookie('kvlabel', kvlabel, { expires: 7 });
             }
         });
         console.log("set save");

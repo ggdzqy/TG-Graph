@@ -68,19 +68,6 @@ export async function onRequest(context) {
                 302
               );
             }
-          } else if (record.metadata.Label == "adult") {
-            if (
-              typeof request.headers.get("Referer") == "undefined" ||
-              request.headers.get("Referer") == null ||
-              request.headers.get("Referer") == ""
-            ) {
-              return Response.redirect(url.origin + "/block-img.html", 302);
-            } else {
-              return Response.redirect(
-                "https://static-res.mixart.top/imgs/question.png",
-                302
-              );
-            }
           }
           //check if the env variables WhiteList_Mode are set
           console.log("env.WhiteList_Mode:", env.WhiteList_Mode);
@@ -105,8 +92,8 @@ export async function onRequest(context) {
       var hh =  String(today.getHours()).padStart(2, '0');       //获取当前小时数(0-23)
       var mm = String(today.getMinutes()).padStart(2, '0');     //获取当前分钟数(0-59)
       var ss = String(today.getSeconds()).padStart(2, '0');     //获取当前秒数(0-59)
-      //var time_today = yyyy + '-' + MM + '-' + DD + ' ' + hh + ':' + mm + ':' + ss;
-      var time_today = yyyy + MM + DD + hh + mm + ss;
+      var time_today = yyyy + '-' + MM + '-' + DD + ' ' + hh + ':' + mm + ':' + ss;
+      //var time_today = yyyy + MM + DD + hh + mm + ss;
 
       if (
         typeof env.img_url == "undefined" ||
