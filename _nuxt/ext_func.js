@@ -20,7 +20,7 @@ function createButtonContainer() {
             let kvtag = document.querySelector("#kvtag").value;
             let kvlabel = document.querySelector("#kvlabel").value;
             let fullurl=`${url}?date=${kvdate}&tag=${kvtag}&label=${kvlabel}`;
-            document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `WAIT: ${fullurl}`
+            document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT: ${fullurl}</div>`
             var yes = confirm('你確定提交嗎？');
             if (yes) {
                 document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<img id="kvimg" style="width:360px;max-height:360px;object-fit:contain;" src="${fullurl}">`;

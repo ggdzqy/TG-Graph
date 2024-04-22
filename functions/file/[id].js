@@ -123,60 +123,11 @@ export async function onRequest(context) {
         if(vtag==null||vtag==""){ vtag = "public"; }
         if(vlabel==null||vlabel==""){ vlabel = ""; }
 
-        let value = null;
-        try {
-          value = await env.img_url.getWithMetadata(params.id);
-          console.log(value);
-        } catch (error) {
-          console.log(error);
-        } 
-        if ( typeof value == "undefined" || value == null ) {
-          //add image to kv
-          await env.img_url.put(params.id, "", {
-            metadata: { ListType: "None", Tag: `${vtag}`, TimeStamp: `${vdate}`, Label: `${vlabel}`},
-          });
-        } else {
-          //modify kv
-          //value.metadata.ListType = "None";
-          value.metadata.Tag = vtag;
-          value.metadata.TimeStamp = vdate;
-          value.metadata.Label = vlabel;
-          await env.img_url.put(params.id,"",{metadata: value.metadata});
-        }
+        //add image to kv
+        await env.img_url.put(params.id, "", {
+          metadata: { ListType: "None", Tag: `${vtag}`, TimeStamp: `${vdate}`, Label: `${vlabel}`},
+        });
       }
-      // } else {
-      //   await fetch(
-      //     `https://api.moderatecontent.com/moderate/?key=` +
-      //       apikey +
-      //       `&url=https://telegra.ph/` +
-      //       url.pathname +
-      //       url.search
-      //   ).then(async (response) => {
-      //     let moderate_data = await response.json();
-      //     console.log(moderate_data);
-      //     console.log("---env.img_url---");
-      //     console.log(env.img_url == "true");
-      //     if (
-      //       typeof env.img_url == "undefined" ||
-      //       env.img_url == null ||
-      //       env.img_url == ""
-      //     ) {
-      //     } else {
-      //       //add image to kv
-      //       await env.img_url.put(params.id, "", {
-      //         metadata: {
-      //           ListType: "None",
-      //           Tag: moderate_data.rating_label,
-      //           TimeStamp: time,
-      //         },
-      //       });
-      //     }
-      //     if (moderate_data.rating_label == "adult") {
-      //       return Response.redirect(url.origin + "/block-img.html", 302);
-      //     }
-      //   });
-      // }
-      ///////////////////end ModerateContent check
     }
     return response;
   });
