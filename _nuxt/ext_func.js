@@ -15,13 +15,12 @@ function createButtonContainer() {
         document.querySelector("#_infobox").innerHTML = `<div id="kv" align="right"><div>Name:<input id="kvname" type="text" readonly="readonly" size="35"></div><div>Date:<input type="text" id="kvdate" size="35"></div><div>Tag:<input type="text" id="kvtag" size="35"></div><div>Label:<input type="text" id="kvlabel" size="35"></div><div><button id="kvsave" type="button">保存</button></div>`;
         document.querySelector("#kvname").value = document.querySelector("input.input-sm").value.split("/file/")[1];
         document.querySelector("#kvsave").addEventListener("click", function() {
+            document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `WAIT: ${fullurl}`
             let url = document.querySelector("input.input-sm").value;
             let kvdate = document.querySelector("#kvdate").value;
             let kvtag = document.querySelector("#kvtag").value;
             let kvlabel = document.querySelector("#kvlabel").value;
             let fullurl=`${url}?date=${kvdate}&tag=${kvtag}&label=${kvlabel}`;
-            document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = ""
-            window.alert(fullurl);
             document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<img id="kvimg" style="width:360px;max-height:360px;object-fit:contain;" src="${fullurl}">`;
         });
         console.log("set save");
