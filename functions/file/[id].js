@@ -108,75 +108,71 @@ export async function onRequest(context) {
       //var time_today = yyyy + '-' + MM + '-' + DD + ' ' + hh + ':' + mm + ':' + ss;
       var time_today = yyyy + MM + DD + hh + mm + ss;
 
-      /////////////////////start ModerateContent check
-      let apikey = env.ModerateContentApiKey;
-
-      if (typeof apikey == "undefined" || apikey == null || apikey == "") {
-        if (
-          typeof env.img_url == "undefined" ||
-          env.img_url == null ||
-          env.img_url == ""
-        ) {
-          console.log("Not enbaled KV");
-        } else {
-          //get values from para in url
-          let vdate = url.searchParams.get("date");
-          let vtag = url.searchParams.get("tag");
-          let vlabel = url.searchParams.get("label");
-          if(vdate==null||vdate==""){ vdate = time_today; }
-          if(vtag==null||vtag==""){ vtag = "public"; }
-          if(vlabel==null||vlabel==""){ vlabel = ""; }
-
-          let value = null;
-          try {
-            value = await env.img_url.getWithMetadata(params.id);
-          } catch (error) {} 
-          if ( typeof value == "undefined" || value == null ) {
-            //add image to kv
-            await env.img_url.put(params.id, "", {
-              metadata: { ListType: "None", Tag: `${vtag}`, TimeStamp: `${vdate}`, Label: `${vlabel}`},
-            });
-          } else {
-            //modify kv
-            //value.metadata.ListType = "None";
-            value.metadata.Tag = `${vtag}`;
-            value.metadata.TimeStamp = `${vdate}`;
-            value.metadata.Label = `${vlabel}`;
-            await env.img_url.put(params.id,"",{metadata: value.metadata});
-          }
-        }
+      if (
+        typeof env.img_url == "undefined" ||
+        env.img_url == null ||
+        env.img_url == ""
+      ) {
+        console.log("Not enbaled KV");
       } else {
-        await fetch(
-          `https://api.moderatecontent.com/moderate/?key=` +
-            apikey +
-            `&url=https://telegra.ph/` +
-            url.pathname +
-            url.search
-        ).then(async (response) => {
-          let moderate_data = await response.json();
-          console.log(moderate_data);
-          console.log("---env.img_url---");
-          console.log(env.img_url == "true");
-          if (
-            typeof env.img_url == "undefined" ||
-            env.img_url == null ||
-            env.img_url == ""
-          ) {
-          } else {
-            //add image to kv
-            await env.img_url.put(params.id, "", {
-              metadata: {
-                ListType: "None",
-                Tag: moderate_data.rating_label,
-                TimeStamp: time,
-              },
-            });
-          }
-          if (moderate_data.rating_label == "adult") {
-            return Response.redirect(url.origin + "/block-img.html", 302);
-          }
-        });
+        //get values from para in url
+        let vdate = url.searchParams.get("date");
+        let vtag = url.searchParams.get("tag");
+        let vlabel = url.searchParams.get("label");
+        if(vdate==null||vdate==""){ vdate = time_today; }
+        if(vtag==null||vtag==""){ vtag = "public"; }
+        if(vlabel==null||vlabel==""){ vlabel = ""; }
+
+        let value = null;
+        try {
+          value = await env.img_url.getWithMetadata(params.id);
+        } catch (error) {} 
+        if ( typeof value == "undefined" || value == null ) {
+          //add image to kv
+          await env.img_url.put(params.id, "", {
+            metadata: { ListType: "None", Tag: `${vtag}`, TimeStamp: `${vdate}`, Label: `${vlabel}`},
+          });
+        } else {
+          //modify kv
+          //value.metadata.ListType = "None";
+          value.metadata.Tag = vtag;
+          value.metadata.TimeStamp = vdate;
+          value.metadata.Label = vlabel;
+          await env.img_url.put(params.id,"",{metadata: value.metadata});
+        }
       }
+      // } else {
+      //   await fetch(
+      //     `https://api.moderatecontent.com/moderate/?key=` +
+      //       apikey +
+      //       `&url=https://telegra.ph/` +
+      //       url.pathname +
+      //       url.search
+      //   ).then(async (response) => {
+      //     let moderate_data = await response.json();
+      //     console.log(moderate_data);
+      //     console.log("---env.img_url---");
+      //     console.log(env.img_url == "true");
+      //     if (
+      //       typeof env.img_url == "undefined" ||
+      //       env.img_url == null ||
+      //       env.img_url == ""
+      //     ) {
+      //     } else {
+      //       //add image to kv
+      //       await env.img_url.put(params.id, "", {
+      //         metadata: {
+      //           ListType: "None",
+      //           Tag: moderate_data.rating_label,
+      //           TimeStamp: time,
+      //         },
+      //       });
+      //     }
+      //     if (moderate_data.rating_label == "adult") {
+      //       return Response.redirect(url.origin + "/block-img.html", 302);
+      //     }
+      //   });
+      // }
       ///////////////////end ModerateContent check
     }
     return response;
