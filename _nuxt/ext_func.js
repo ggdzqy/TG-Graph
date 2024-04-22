@@ -15,9 +15,9 @@ function createButtonContainer() {
         document.querySelector("#_infobox").innerHTML = `<div id="kv" align="right"><div>Name:<input id="kvname" type="text" readonly="readonly" size="35"></div><div>Date:<input type="text" id="kvdate" size="35"></div><div>Tag:<input type="text" id="kvtag" size="35"></div><div>Label:<input type="text" id="kvlabel" size="35"></div><div><button id="kvsave" type="button">保存</button></div>`;
         document.querySelector("#kvname").value = document.querySelector("input.input-sm").value.split("/file/")[1];
         document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT:</div>`
-        document.querySelector("#kvdate").value = document.querySelector("#kvdate").placeholder;
-        document.querySelector("#kvtag").value = document.querySelector("#kvtag").placeholder;
-        document.querySelector("#kvlabel").value = document.querySelector("#kvlabel").placeholder;
+        document.querySelector("#kvdate").value = document.querySelector("#kvdate").getAttribute("placeholder");
+        document.querySelector("#kvtag").value = document.querySelector("#kvtag").getAttribute("placeholder");
+        document.querySelector("#kvlabel").value = document.querySelector("#kvlabel").getAttribute("placeholder");
 
         document.querySelector("#kvsave").addEventListener("click", function() {
             let url = document.querySelector("input.input-sm").value;
@@ -29,9 +29,9 @@ function createButtonContainer() {
             var yes = confirm('你確定提交嗎？');
             if (yes) {
                 document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<img id="kvimg" style="width:360px;max-height:360px;object-fit:contain;" src="${fullurl}">`;
-                document.querySelector("#kvdate").placeholder = kvdate;
-                document.querySelector("#kvtag").placeholder = kvtag;
-                document.querySelector("#kvlabel").placeholder = kvlabel;
+                document.querySelector("#kvdate").setAttribute("placeholder", kvdate);
+                document.querySelector("#kvtag").setAttribute("placeholder",  kvtag);
+                document.querySelector("#kvlabel").setAttribute("placeholder",  kvlabel);
             }
         });
         console.log("set save");
