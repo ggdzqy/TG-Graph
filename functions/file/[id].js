@@ -124,9 +124,12 @@ export async function onRequest(context) {
         if(vlabel==null||vlabel==""){ vlabel = ""; }
 
         let value = null;
-        //try {
-        //  value = await env.img_url.getWithMetadata(params.id);
-        //} catch (error) {} 
+        try {
+          value = await env.img_url.getWithMetadata(params.id);
+          console.log(value);
+        } catch (error) {
+          console.log(error);
+        } 
         if ( typeof value == "undefined" || value == null ) {
           //add image to kv
           await env.img_url.put(params.id, "", {
