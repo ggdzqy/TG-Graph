@@ -12,7 +12,7 @@ function createButtonContainer() {
 
     //setTimeout(function(){doLoad();}, 500)
     document.querySelector("#op").addEventListener('click', function() {
-        document.querySelector("#_infobox").innerHTML = `<div id="kv" align="right"><div>Name:<input id="kvname" type="text" readonly="readonly" size="35"></div><div>Date:<input type="text" id="kvdate" size="35"></div><div>Tag:<input type="text" id="kvtag" size="35"></div><div>Label:<input type="text" id="kvlabel" size="35"></div><div><button id="kvsave" type="button">保存</button></div>`;
+        document.querySelector("#_infobox").innerHTML = `<div id="kv" align="right"><div>Name:<input id="kvname" type="text" readonly="readonly" size="35" placeholder="name"></div><div>Date:<input type="text" id="kvdate" size="35" placeholder="date"></div><div>Tag:<input type="text" id="kvtag" size="35" placeholder="tag"></div><div>Label:<input type="text" id="kvlabel" size="35" placeholder="label"></div><div><button id="kvsave" type="button">保存</button></div>`;
         document.querySelector("#kvname").value = document.querySelector("input.input-sm").value.split("/file/")[1];
         document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT:</div>`
         document.querySelector("#kvdate").value = document.querySelector("#kvdate").getAttribute("placeholder");
