@@ -107,12 +107,12 @@ export async function onRequest(context) {
       } else {
         //get values from para in url
         let vorg = url.searchParams.get("org") ?? " ";
-        let vdate = url.searchParams.get("date");
-        let vtag = url.searchParams.get("tag");
-        let vlabel = url.searchParams.get("label");
-        if(vdate==null||vdate==""){ vdate = time_today; }
-        if(vtag==null||vtag==""){ vtag = "public"; }
-        if(vlabel==null||vlabel==""){ vlabel = ""; }
+        let vdate = url.searchParams.get("date") ?? time_today;
+        let vtag = url.searchParams.get("tag") ?? "public";
+        let vlabel = url.searchParams.get("label") ?? " ";
+        // if(vdate==null||vdate==""){ vdate = time_today; }
+        // if(vtag==null||vtag==""){ vtag = "public"; }
+        // if(vlabel==null||vlabel==""){ vlabel = ""; }
 
         //add image to kv
         await env.img_url.put(params.id, "", {

@@ -13,25 +13,28 @@ function createButtonContainer() {
 
     //setTimeout(function(){doLoad();}, 500)
     document.querySelector("#op").addEventListener('click', function() {
-        document.querySelector("#_infobox").innerHTML = `<div class="kv" id="kv" align="right"><div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly"></div><div>Date:<input type="text" id="kvdate"></div><div>Tag:<input type="text" id="kvtag"></div><div>Label:<input type="text" id="kvlabel"></div><div><button id="kvsave" type="button">保存</button></div>`;
+        document.querySelector("#_infobox").innerHTML = `<div class="kv" id="kv" align="right"><div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly"></div><div>Org:<input type="text" id="kviorg"></div><div>Date:<input type="text" id="kvdate"></div><div>Tag:<input type="text" id="kvtag"></div><div>Label:<input type="text" id="kvlabel"></div><div><button id="kvsave" type="button">保存</button></div>`;
         document.querySelector("#kvname").value = document.querySelector("input.input-sm").value.split("/file/")[1];
         document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT:</div>`
         //read cookie
+        document.querySelector("#kvorg").value = $.cookie('kvorg');
         document.querySelector("#kvdate").value = $.cookie('kvdate');
         document.querySelector("#kvtag").value = $.cookie('kvtag');
         document.querySelector("#kvlabel").value = $.cookie('kvlabel');
 
         document.querySelector("#kvsave").addEventListener("click", function() {
             let url = document.querySelector("input.input-sm").value;
+            let kvorg = document.querySelector("#kvorg").value;
             let kvdate = document.querySelector("#kvdate").value;
             let kvtag = document.querySelector("#kvtag").value;
             let kvlabel = document.querySelector("#kvlabel").value;
-            let fullurl=`${url}?date=${kvdate}&tag=${kvtag}&label=${kvlabel}`;
+            let fullurl=`${url}?org=${kvorg}&date=${kvdate}&tag=${kvtag}&label=${kvlabel}`;
             document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT: ${fullurl}</div>`
             var yes = confirm('你確定提交嗎？');
             if (yes) {
                 document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<img id="kvimg" style="width:360px;max-height:360px;object-fit:contain;" src="${fullurl}">`;
                 //set cookie
+                $.cookie('kvorg', kvorg, { expires: 7 });
                 $.cookie('kvdate', kvdate, { expires: 7 });
                 $.cookie('kvtag', kvtag, { expires: 7 });
                 $.cookie('kvlabel', kvlabel, { expires: 7 });
