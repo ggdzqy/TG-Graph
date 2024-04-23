@@ -37,7 +37,7 @@ function createButtonContainer() {
                 $.cookie('kvlabel', kvlabel, { expires: 7 });
             }
         });
-        console.log("set save");
+        console.log("refreshed.");
     });
-    console.log("set DOM")
+    console.log("Set DOM start.")
 })();
