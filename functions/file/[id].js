@@ -15,7 +15,7 @@ export async function onRequest(context) {
   const thisreferer = request.headers.get('referer') ?? "http://noreferer";
   const refererUrl = new URL(thisreferer);
   if(allowedDomains.includes(refererUrl.hostname) == false){
-      return Response.redirect("https://static-res.mixart.top/imgs/question.png", 302);
+      return Response.redirect("https://static-res.mixart.top/imgs/404.png", 302);
   }
 
   const response = fetch("https://telegra.ph/" + url.pathname + url.search, {
@@ -106,6 +106,7 @@ export async function onRequest(context) {
         console.log("Not enbaled KV");
       } else {
         //get values from para in url
+        let vorg = url.searchParams.get("org") ?? " ";
         let vdate = url.searchParams.get("date");
         let vtag = url.searchParams.get("tag");
         let vlabel = url.searchParams.get("label");
@@ -115,7 +116,7 @@ export async function onRequest(context) {
 
         //add image to kv
         await env.img_url.put(params.id, "", {
-          metadata: { ListType: "None", Tag: `${vtag}`, TimeStamp: `${vdate}`, Label: `${vlabel}`},
+          metadata: { ListType: "None", Org: `${vorg}`, Tag: `${vtag}`, TimeStamp: `${vdate}`, Label: `${vlabel}`},
         });
       }
     }
