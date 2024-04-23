@@ -12,9 +12,8 @@ export async function onRequest(context) {
   const url = new URL(request.url);
 
   const allowedDomains = env.ALLOWED_DOMAINS;
-  console.log(allowedDomains);
-  let Referer = request.headers.get('Referer') ?? "http://noreferer";
-  let refererUrl = new URL(Referer);
+  const Referer = request.headers.get('Referer') ?? "http://noreferer";
+  const refererUrl = new URL(Referer);
   if(!allowedDomains.includes(refererUrl.hostname)){
       return Response.redirect("https://static-res.mixart.top/imgs/question.png", 302);
   }
