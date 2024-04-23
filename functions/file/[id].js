@@ -12,8 +12,8 @@ export async function onRequest(context) {
   const url = new URL(request.url);
 
   const allowedDomains = env.ALLOWED_DOMAINS;
-  const Referer = request.headers.get('Referer') ?? "http://noreferer";
-  const refererUrl = new URL(Referer);
+  const referer = request.headers.get('Referer') ?? request.headers.get('referer') ?? "http://noreferer";
+  const refererUrl = new URL(referer);
   if(!allowedDomains.includes(refererUrl.hostname)){
       return Response.redirect("https://static-res.mixart.top/imgs/question.png", 302);
   }
@@ -27,9 +27,9 @@ export async function onRequest(context) {
     //console.log(response.status); // 200
     // fix: 304 not modified ListType Block can be displayed
     if (response.ok || (!response.ok && response.status === 304)) {
-      // Referer header equal to the admin page
+      // referer header equal to the admin page
       console.log(url.origin + "/admin");
-      if (request.headers.get("Referer") == url.origin + "/admin") {
+      if (request.headers.get("referer") == url.origin + "/admin") {
         //show the image
         return response;
       }
@@ -50,12 +50,12 @@ export async function onRequest(context) {
           if (record.metadata.ListType == "White") {
             return response;
           } else if (record.metadata.ListType == "Block") {
-            console.log("Referer");
-            console.log(request.headers.get("Referer"));
+            console.log("referer");
+            console.log(request.headers.get("referer"));
             if (
-              typeof request.headers.get("Referer") == "undefined" ||
-              request.headers.get("Referer") == null ||
-              request.headers.get("Referer") == ""
+              typeof request.headers.get("referer") == "undefined" ||
+              request.headers.get("referer") == null ||
+              request.headers.get("referer") == ""
             ) {
               console.log(
                 'url.origin+"/block-img.html"',
