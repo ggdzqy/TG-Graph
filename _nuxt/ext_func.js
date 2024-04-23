@@ -13,7 +13,7 @@ function createButtonContainer() {
 
     //setTimeout(function(){doLoad();}, 500)
     document.querySelector("#op").addEventListener('click', function() {
-        document.querySelector("#_infobox").innerHTML = `<div class="kv" id="kv" align="right"><div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly"></div><div>Org:<input type="text" id="kviorg"></div><div>Date:<input type="text" id="kvdate"></div><div>Tag:<input type="text" id="kvtag"></div><div>Label:<input type="text" id="kvlabel"></div><div><button id="kvclearcookie" type="button">清除</button><button id="kvsave" type="button">保存</button></div>`;
+        document.querySelector("#_infobox").innerHTML = `<div class="kv" id="kv" align="right"><div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly"></div><div>Org:<input type="text" id="kvorg"></div><div>Date:<input type="text" id="kvdate"></div><div>Tag:<input type="text" id="kvtag"></div><div>Label:<input type="text" id="kvlabel"></div><div><button id="kvclearcookie" type="button">清除</button><button id="kvsave" type="button">保存</button></div>`;
         document.querySelector("#kvname").value = document.querySelector("input.input-sm").value.split("/file/")[1];
         document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT:</div>`
         //read cookie
