@@ -12,9 +12,9 @@ export async function onRequest(context) {
   const url = new URL(request.url);
 
   const allowedDomains = env.ALLOWED_DOMAINS;
-  const referer = request.headers.get('referer') ?? "http://noreferer";
-  const refererUrl = new URL(referer);
-  if(!allowedDomains.includes(refererUrl.hostname)){
+  const thisreferer = request.headers.get('referer') ?? "http://noreferer";
+  const refererUrl = new URL(thisreferer);
+  if(allowedDomains.includes(refererUrl.hostname) == false){
       return Response.redirect("https://static-res.mixart.top/imgs/question.png", 302);
   }
 
@@ -32,6 +32,9 @@ export async function onRequest(context) {
       if (request.headers.get("referer") == url.origin + "/admin") {
         //show the image
         return response;
+      }
+      if(allowedDomains.includes(refererUrl.hostname) == false){
+        return Response.redirect("https://static-res.mixart.top/imgs/question.png", 302);
       }
 
       if (
