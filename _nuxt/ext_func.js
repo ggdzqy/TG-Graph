@@ -17,7 +17,7 @@ function createButtonContainer() {
         document.querySelector("#kvname").value = document.querySelector("input.input-sm").value.split("/file/")[1];
         document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT:</div>`
         //read cookie
-        document.querySelector("#kvorg").value = $.cookie('kvorg') ?? "";
+        document.querySelector("#kvorg").value = document.getElementById("upFiles").files[0] ?? $.cookie('kvorg') ?? "";
         document.querySelector("#kvdate").value = $.cookie('kvdate') ?? "";
         document.querySelector("#kvtag").value = $.cookie('kvtag') ?? "";
         document.querySelector("#kvlabel").value = $.cookie('kvlabel') ?? "";
