@@ -9,6 +9,11 @@ $(function() {
     </div>`;
 })
 
+$.clearUploadInfoContainer = function(){
+    document.querySelector("#_infobox").innerHTML = `WAIT`;
+    console.log("createUploadInfoContainer cleared.")
+}
+
 $.createUploadInfoContainer = function(){
     //setTimeout(function(){doLoad();}, 500)
     //document.querySelector("#op").addEventListener('click', function() {
@@ -19,7 +24,7 @@ $.createUploadInfoContainer = function(){
         <div>Tag:<input type="text" id="kvtag"></div>
         <div>Label:<input type="text" id="kvlabel"></div>
         <div><button id="kvclearcookie" type="button">清除Cookie</button>
-        <button id="kvsave" type="button">保存</button>
+        <button id="kvsave" type="button">提交</button>
         </div>`;
         document.querySelector("#kvname").value = document.querySelector("input.input-sm").value.split("/file/")[1];
         document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT:</div>`
@@ -37,7 +42,7 @@ $.createUploadInfoContainer = function(){
             let kvlabel = document.querySelector("#kvlabel").value;
             let fullurl=`${url}?org=${kvorg}&date=${kvdate}&tag=${kvtag}&label=${kvlabel}`;
             document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT: ${fullurl}</div>`
-            var yes = confirm('你確定提交嗎？');
+            var yes = confirm('你確定提交数据嗎？');
             if (yes) {
                 document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<img id="kvimg" style="width:360px;max-height:360px;object-fit:contain;" src="${fullurl}">`;
                 //set cookie
@@ -48,10 +53,13 @@ $.createUploadInfoContainer = function(){
             }
         });
         document.querySelector("#kvclearcookie").addEventListener("click", function() {
-            $.cookie('kvorg', null);
-            $.cookie('kvdate', null);
-            $.cookie('kvtag', null);
-            $.cookie('kvlabel', null);
+            var yes = confirm('你確定要清除Cookies嗎？');
+            if (yes) {
+                $.cookie('kvorg', null);
+                $.cookie('kvdate', null);
+                $.cookie('kvtag', null);
+                $.cookie('kvlabel', null);
+            }
         }); 
     //});
     console.log("createUploadInfoContainer start.")
