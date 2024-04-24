@@ -8,7 +8,7 @@ function createButtonContainer() {
 }
 
 
-(function(){
+$(function AddDOM() {
     document.querySelector("body").innerHTML += `<div id="_topbox" style="display: flex; flex-direction: column; align-items: center; position: fixed; top: 15%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;"><div id="_infobox"><div>WAIT ...</div></div><div id="_opbox"><button id="op">刷新</button></div></div>`;
 
     //setTimeout(function(){doLoad();}, 500)
@@ -17,7 +17,7 @@ function createButtonContainer() {
         document.querySelector("#kvname").value = document.querySelector("input.input-sm").value.split("/file/")[1];
         document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT:</div>`
         //read cookie
-        document.querySelector("#kvorg").value = document.getElementById("upFiles").files[0] ?? $.cookie('kvorg') ?? "";
+        document.querySelector("#kvorg").value = document.getElementById("upFiles").files[0].name ?? $.cookie('kvorg') ?? "";
         document.querySelector("#kvdate").value = $.cookie('kvdate') ?? "";
         document.querySelector("#kvtag").value = $.cookie('kvtag') ?? "";
         document.querySelector("#kvlabel").value = $.cookie('kvlabel') ?? "";
