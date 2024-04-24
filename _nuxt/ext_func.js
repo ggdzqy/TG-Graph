@@ -9,7 +9,7 @@ function createButtonContainer() {
 
 
 (function(){
-    document.querySelector("body").innerHTML += `<div id="_topbox" style="display: flex; flex-direction: column; align-items: center; position: fixed; top: 50%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;"><div id="_infobox">WAIT ...</div><div id="_opbox"><button id="op">刷新</button></div></div>`;
+    document.querySelector("body").innerHTML += `<div id="_topbox" style="display: flex; flex-direction: column; align-items: center; position: fixed; top: 15%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;"><div id="_infobox">WAIT ...</div><div id="_opbox"><button id="op">刷新</button></div></div>`;
 
     //setTimeout(function(){doLoad();}, 500)
     document.querySelector("#op").addEventListener('click', function() {
