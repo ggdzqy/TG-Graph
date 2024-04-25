@@ -52,7 +52,7 @@ $.createUploadInfoContainer = function(){
             let kvdate = document.querySelector("#kvdate").value;
             let kvtag = document.querySelector("#kvtag").value;
             let kvlabel = document.querySelector("#kvlabel").value;
-            let fullurl=`${fakepath(url)}?org=${kvorg}&date=${kvdate}&tag=${kvtag}&label=${kvlabel}`;
+            let fullurl=`${url}?org=${kvorg}&date=${kvdate}&tag=${kvtag}&label=${kvlabel}`;
             document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT: ${fullurl}</div>`
             var yes = confirm('你確定提交数据嗎？');
             if (yes) {

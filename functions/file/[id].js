@@ -1,16 +1,3 @@
-function fakepath(srcpath){
-  const regex = /(file\/)([0-9a-z]+)(\.jpg|\.png|\.gif)/i;
-  const f = srcpath!=null ? srcpath.match(regex) : "";
-  if(f==null || f==""){
-    return srcpath;
-  }
-  if(f && f.length == 4){
-      let rev = f[1]+f[2].split("").reverse().join("")+f[3];
-      return srcpath.replace(f[0],rev)
-  }
-  return srcpath;
-}
-
 export async function onRequest(context) {
   // Contents of context object
   const {
@@ -35,7 +22,7 @@ export async function onRequest(context) {
   }
 
   const realpathname = fakepath(url.pathname)
-  const response = fetch("https://telegra.ph/" + realpathname + url.search, {
+  const response = fetch("https://telegra.ph/" + url.pathname + url.search, {
     method: request.method,
     headers: request.headers,
     body: request.body,

@@ -5,7 +5,7 @@ var requestOptions = {
   credentials: "include",
 };
 const authCode =
-  window.localStorage.getItem("authCode") || window.prompt("authCode");
+  window.localStorage.getItem("authCode") || window.prompt("請輸入你的授權碼");
 fetch(`./api/authCode/${authCode}`)
   .then(async (res) => {
     const isOK = await res.text();
@@ -13,13 +13,9 @@ fetch(`./api/authCode/${authCode}`)
       window.localStorage.setItem("authCode", authCode);
     } else {
       window.location.reload()
-      console.log("status", status);
     }
   })
   .catch((e) => {
     window.localStorage.removeItem("authCode")
-    console.log(" ----");
-    console.log("e:", e);
-    console.log(" ----");
     window.location.reload();
   });
