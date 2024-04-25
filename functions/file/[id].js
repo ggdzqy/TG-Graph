@@ -21,7 +21,6 @@ export async function onRequest(context) {
       return Response.redirect(RedirectURL404, 302);
   }
 
-  const realpathname = fakepath(url.pathname)
   const response = fetch("https://telegra.ph/" + url.pathname + url.search, {
     method: request.method,
     headers: request.headers,
