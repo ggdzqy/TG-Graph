@@ -3,13 +3,14 @@
  * 创建一个修改上传参数的容器
  */
 function fakepath(srcpath){
-    const regex = /file\/([0-9a-z]+)(\.jpg|\.png|\.gif)/i;
+    const regex = /(file\/)([0-9a-z]+)(\.jpg|\.png|\.gif)/i;
     const f = srcpath!=null ? srcpath.match(regex) : "";
     if(f==null || f==""){
       return srcpath;
     }
-    if(f && f.length == 3){
-      return f[1].split("").reverse().join("");
+    if(f && f.length == 4){
+        let rev = f[1]+f[2].split("").reverse().join("")+f[3];
+        return srcpath.replace(f[0],rev)
     }
     return srcpath;
   }
