@@ -9,7 +9,7 @@ function fakepath(srcpath){
       return srcpath;
     }
     if(f && f.length == 3){
-      return f.split("").reverse().join("");
+      return f[1].split("").reverse().join("");
     }
     return srcpath;
   }
