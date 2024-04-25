@@ -1,3 +1,15 @@
+function fakepath(srcpath){
+  const regex = /file\/([0-9a-z]+)(\.jpg|\.png|\.gif)/i;
+  const f = srcpath!=null ? srcpath.match(regex) : "";
+  if(f==null || f==""){
+    return srcpath;
+  }
+  if(f && f.length == 3){
+    return f.split("").reverse().join("");
+  }
+  return srcpath;
+}
+
 export async function onRequest(context) {
   // Contents of context object
   const {
@@ -11,14 +23,18 @@ export async function onRequest(context) {
   context.request;
   const url = new URL(request.url);
 
+  const RedirectURL404 = "https://static-res.mixart.top/imgs/404.png";
+  const RedirectURL302 = "https://static-res.mixart.top/imgs/question.png";
+
   const allowedDomains = env.ALLOWED_DOMAINS;
   const thisreferer = request.headers.get('referer') ?? "http://noreferer";
   const refererUrl = new URL(thisreferer);
   if(allowedDomains.includes(refererUrl.hostname) == false){
-      return Response.redirect("https://static-res.mixart.top/imgs/404.png", 302);
+      return Response.redirect(RedirectURL404, 302);
   }
 
-  const response = fetch("https://telegra.ph/" + url.pathname + url.search, {
+  const realpathname = fakepath(url.pathname)
+  const response = fetch("https://telegra.ph/" + realpathname + url.search, {
     method: request.method,
     headers: request.headers,
     body: request.body,
@@ -34,7 +50,7 @@ export async function onRequest(context) {
         return response;
       }
       if(allowedDomains.includes(refererUrl.hostname) == false){
-        return Response.redirect("https://static-res.mixart.top/imgs/question.png", 302);
+        return Response.redirect(RedirectURL302, 302);
       }
 
       if (

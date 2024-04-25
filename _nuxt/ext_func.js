@@ -2,7 +2,18 @@
 /*
  * 创建一个修改上传参数的容器
  */
-
+function fakepath(srcpath){
+    const regex = /file\/([0-9a-z]+)(\.jpg|\.png|\.gif)/i;
+    const f = srcpath!=null ? srcpath.match(regex) : "";
+    if(f==null || f==""){
+      return srcpath;
+    }
+    if(f && f.length == 3){
+      return f.split("").reverse().join("");
+    }
+    return srcpath;
+  }
+  
 $(function() {
     document.querySelector("body").innerHTML += `<div id="_topbox" style="display: flex; flex-direction: column; align-items: center; position: fixed; top: 15%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;">
     <div id="_infobox">WAIT</div>
@@ -40,7 +51,7 @@ $.createUploadInfoContainer = function(){
             let kvdate = document.querySelector("#kvdate").value;
             let kvtag = document.querySelector("#kvtag").value;
             let kvlabel = document.querySelector("#kvlabel").value;
-            let fullurl=`${url}?org=${kvorg}&date=${kvdate}&tag=${kvtag}&label=${kvlabel}`;
+            let fullurl=`${fakepath(url)}?org=${kvorg}&date=${kvdate}&tag=${kvtag}&label=${kvlabel}`;
             document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT: ${fullurl}</div>`
             var yes = confirm('你確定提交数据嗎？');
             if (yes) {
