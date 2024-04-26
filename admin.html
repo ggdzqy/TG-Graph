@@ -117,22 +117,20 @@
               </el-table-column>
             </el-table>
           </template>
-          <div id="_topbox" style="display: none; flex-direction: column; align-items: center; position: fixed; top: 15%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;">
-            <div id="_infobox">
-              <div class="kv" id="kv" align="right">
-                <div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly"></div>
-                <div>Org:<input type="text" id="kvorg"></div>
-                <div>Date:<input type="text" id="kvdate"></div>
-                <div>Tag:<input type="text" id="kvtag"></div>
-                <div>Label:<input type="text" id="kvlabel"></div>
-                <div></div><el-button type="primary" size="mini" icon="el-icon-delete"
-                  @click="handleSave(scope.$index,scope.row.name)"></el-button></div>
-            </div>
-          </div>
         </el-main>
     </el-container>
   </div>
-
+  <div id="_topbox" style="display: none; flex-direction: column; align-items: center; position: fixed; top: 15%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;">
+    <div id="_infobox">
+      <div class="kv" id="kv" align="right">
+        <div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly"></div>
+        <div>Org:<input type="text" id="kvorg"></div>
+        <div>Date:<input type="text" id="kvdate"></div>
+        <div>Tag:<input type="text" id="kvtag"></div>
+        <div>Label:<input type="text" id="kvlabel"></div>
+        <div><button id="kvsave" type="button">提交</button></div>
+    </div>
+  </div>
 </body>
   <!-- import Vue before Element -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js" integrity="sha256-kXTEJcRFN330VirZFl6gj9+UM6gIKW195fYZeR3xDhc=" crossorigin="anonymous"></script>
@@ -154,8 +152,7 @@
           id: ''
         },
         search: '',
-        password:'123456',
-        dialogVisible: false
+        password:'123456'
       },
       methods: {
       handleSave(name) {
