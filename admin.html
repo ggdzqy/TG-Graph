@@ -12,14 +12,12 @@
     table td {
       /* 设置单元格的文字内容溢出时自动换行 */
       word-wrap: break-word;
-      /* 设置单元格的最大宽度为 200px */
-      max-width: 200px;
     }
     .el-table tr:hover{
-      background: #697e8a; //鼠标移动到当前行的颜色
+      background: #73818a; /*鼠标移动到当前行的颜色*/
     }
     .el-table tr {
-	    background-color: #bec8d8; // 单数行的颜色
+	    background-color: #9ba6b8; /*单数行的颜色*/
     }
 
     </style>
@@ -100,9 +98,6 @@
                 <template slot-scope="scope">
                 <el-popover trigger="hover" placement="top">
                   <p>{{ scope.row.metadata }}</p>
-                  <div slot="reference" class="name-wrapper">
-                    {{ scope.row.metadata }}
-                  </div>
                 </el-popover>
               </template>
               </el-table-column>
