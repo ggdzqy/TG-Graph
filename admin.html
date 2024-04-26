@@ -93,19 +93,21 @@
                 </el-popover>
               </template>
               </el-table-column>
-              <el-table-column align="right">
+              <el-table-column align="right"  width="120px">
                 <template slot="header" slot-scope="scope">
                   <!--<el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>-->
                 </template>
                 <template slot-scope="scope">
-                  <el-button type="success" icon="el-icon-document"
-                  @click="handleCopy(scope.row.name)"></el-button>
-                  <el-button type="primary" icon="el-icon-view"
-                    @click="handleWhite(scope.$index,scope.row.name)"></el-button>
-                  <el-button type="info" icon="el-icon-news"
-                    @click="handleBlock(scope.$index,scope.row.name)"></el-button>
-                  <el-button type="danger" icon="el-icon-delete"
-                    @click="handleDelete(scope.$index,scope.row.name)"></el-button>
+                  <el-button type="primary" size="mini" icon="el-icon-edit"
+                  @click="handleEdit(scope.row.name)" circle></el-button>
+                  <el-button type="success" size="mini" icon="el-icon-document"
+                  @click="handleCopy(scope.row.name)" circle></el-button>
+                  <el-button type="primary" size="mini" icon="el-icon-view"
+                    @click="handleWhite(scope.$index,scope.row.name)" circle></el-button>
+                  <el-button type="info" size="mini" icon="el-icon-news"
+                    @click="handleBlock(scope.$index,scope.row.name)" circle></el-button>
+                  <el-button type="danger" size="mini" icon="el-icon-delete"
+                    @click="handleDelete(scope.$index,scope.row.name)" circle></el-button>
                 </template>
               </el-table-column>
             </el-table>
