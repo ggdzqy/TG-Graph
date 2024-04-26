@@ -5,6 +5,10 @@
   <!-- import CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.15.3/lib/theme-chalk/index.css" integrity="sha256-ghr1zmXTODLKl1HULQd6fq1MIe7m3FJiNTOCT8sddLM=" crossorigin="anonymous">
   <style>
+    body {
+      max-width: 800px;
+      margin: 0 auto;
+    }
     table td {
       /* 设置单元格的文字内容溢出时自动换行 */
       word-wrap: break-word;
@@ -99,15 +103,15 @@
                 </template>
                 <template slot-scope="scope">
                   <el-button type="primary" size="mini" icon="el-icon-edit"
-                  @click="handleEdit(scope.row.name)" circle></el-button>
+                  @click="handleEdit(scope.row.name)"></el-button>
                   <el-button type="success" size="mini" icon="el-icon-document"
-                  @click="handleCopy(scope.row.name)" circle></el-button>
+                  @click="handleCopy(scope.row.name)"></el-button>
                   <el-button type="primary" size="mini" icon="el-icon-view"
-                    @click="handleWhite(scope.$index,scope.row.name)" circle></el-button>
+                    @click="handleWhite(scope.$index,scope.row.name)"></el-button>
                   <el-button type="info" size="mini" icon="el-icon-news"
-                    @click="handleBlock(scope.$index,scope.row.name)" circle></el-button>
+                    @click="handleBlock(scope.$index,scope.row.name)"></el-button>
                   <el-button type="danger" size="mini" icon="el-icon-delete"
-                    @click="handleDelete(scope.$index,scope.row.name)" circle></el-button>
+                    @click="handleDelete(scope.$index,scope.row.name)"></el-button>
                 </template>
               </el-table-column>
             </el-table>
