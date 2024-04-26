@@ -114,10 +114,10 @@
               <el-table-column label="data" prop="data">
                 <template slot-scope="scope">
                 <el-popover trigger="click" placement="top">
-                  <p>{{ scope.row.metadata }}</p>
-                  <!--<div slot="reference" class="name-wrapper" style="Float:left">
+                  <!--p>{{ scope.row.metadata }}</p-->
+                  <div slot="reference" class="name-wrapper" style="Float:left">
                     {{ scope.row.metadata }}
-                  </div>-->
+                  </div>
                   <div class="kv" id="kv" align="right" style="Float:left">
                     <el-input v-bind:value="scope.row.name" label:"name"
                       :disabled="true">
