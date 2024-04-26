@@ -11,8 +11,8 @@ export async function onRequest(context) {
   context.request;
   const url = new URL(request.url);
 
-  const RedirectURL404 = "https://static-res.mixart.top/imgs/404.png";
-  const RedirectURL302 = "https://static-res.mixart.top/imgs/question.png";
+  const RedirectURL404 = "https://static.memoo.top/imgs/404.png";
+  const RedirectURL302 = "https://static.memoo.top/imgs/null.png";
 
   const allowedDomains = env.ALLOWED_DOMAINS;
   const thisreferer = request.headers.get('referer') ?? "http://noreferer";

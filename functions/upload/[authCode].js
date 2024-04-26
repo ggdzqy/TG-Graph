@@ -18,7 +18,7 @@ export async function onRequestPost(context) {
         });
         return response;
     }else {
-        return new UnauthorizedException('no auth')
+        return new UnauthorizedException('no auth');
     }
   }
   function UnauthorizedException(reason) {
