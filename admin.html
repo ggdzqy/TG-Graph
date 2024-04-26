@@ -15,6 +15,13 @@
       /* 设置单元格的最大宽度为 200px */
       max-width: 200px;
     }
+    .el-table tr:hover{
+      background: #f6faff; //鼠标移动到当前行的颜色
+    }
+    .el-table tr {
+	    background-color: #eaf2ff; // 单数行的颜色
+    }
+
     </style>
 </head>
 <body>
@@ -68,9 +75,10 @@
           <template>
             <el-table
               :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-              stripe
+              :stripe="true"
+              :header-cell-style="{fontWeight:'bold',fontSize:'13px',color:'#58595d'}"
               style="width: 100%">
-              <el-table-column label="preview" prop="preview" width="160px">
+              <el-table-column align="center" label="preview" prop="preview" width="160px">
                 <template slot-scope="scope">
                   <video v-if="scope.row.name.indexOf('.mp4')>0" style="width: 100%; height: 100%;" controls>
                     <source :src="'/file/'+scope.row.name" type="video/mp4">
@@ -86,7 +94,7 @@
                   />
                 </template>
               </el-table-column>
-              <el-table-column label="name" prop="name" width="120px">
+              <el-table-column  header-align="center" align="left" label="name" prop="name" width="120px">
               </el-table-column>
               <el-table-column label="data" prop="data">
                 <template slot-scope="scope">
@@ -98,7 +106,7 @@
                 </el-popover>
               </template>
               </el-table-column>
-              <el-table-column align="right"  width="80px">
+              <el-table-column  header-align="center" align="right"  width="80px">
                 <template slot="header" slot-scope="scope">
                   <!--<el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>-->
                 </template>
@@ -159,8 +167,8 @@
       },
       handleBlock(index,key) {
         console.log(key);
-        if (confirm("确认加入黑名单吗?")) {
-        console.log("加入黑名单")
+        if (confirm("确认标记为‘私有’吗?")) {
+        console.log("私有标记")
         var requestOptions = {
           method: 'GET',
           redirect: 'follow',
@@ -200,8 +208,8 @@
     },
     handleWhite(index,key) {
       console.log(key);
-      if (confirm("确认加入白名单吗?")) {
-      console.log("加入白名单")
+      if (confirm("确认标记为‘公开’吗?")) {
+      console.log("公开标记")
       var requestOptions = {
         method: 'GET',
         redirect: 'follow',

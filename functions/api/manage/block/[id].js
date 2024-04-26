@@ -15,7 +15,7 @@ export async function onRequest(context) {
     console.log(value)
     //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
     //change the metadata
-    value.metadata.ListType = "Block"
+    value.metadata.ListType = "private"
     await env.img_url.put(params.id,"",{metadata: value.metadata});
     const info = JSON.stringify(value.metadata);
     return new Response(info);
