@@ -17,7 +17,7 @@ function fakepath(srcpath){
   
 $(function() {
     document.querySelector("body").innerHTML += `<div id="_topbox" style="display: flex; flex-direction: column; align-items: center; position: fixed; top: 15%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;">
-    <div id="_infobox">WAIT</div>
+    <div id="_infobox"><a href="/admin">ADMIN</a></div>
     </div>`;
 })
 

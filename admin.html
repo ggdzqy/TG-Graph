@@ -93,11 +93,11 @@
                   <!--<el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>-->
                 </template>
                 <template slot-scope="scope">
-                  <el-button size="mini" type="success"
+                  <el-button type="success"
                   @click="handleCopy(scope.row.name)">复制链接</el-button>
-                  <el-button size="mini" type="primary"
+                  <el-button type="primary"
                     @click="handleWhite(scope.$index,scope.row.name)">白名单</el-button>
-                  <el-button size="mini" type="info"
+                  <el-button type="info"
                     @click="handleBlock(scope.$index,scope.row.name)">黑名单</el-button>
                   <el-button type="danger" icon="el-icon-delete"
                     @click="handleDelete(scope.$index,scope.row.name)"></el-button>
