@@ -17,7 +17,27 @@
 	    background-color: #c9c9c9; /*单数行的颜色*/
     }
 
-    </style>
+    .kv input{
+      margin:1px 4px;
+      border-radius: 4px;
+      padding: 4px 4px;
+      width: 250px;
+      font-size: 16px;
+      outline-style: none ;
+      border: 1px solid #777; 
+    }
+    .kv button{
+      margin:10px 4px;
+      padding:4px 30px;
+    }
+    .kv div{
+      font-size:12px;
+      padding:2px 2px;
+    }
+    #kvname{
+      border: 1px solid #ccc;  
+    }
+  </style>
 </head>
 <body>
   <div id="app">
@@ -99,7 +119,12 @@
                     {{ scope.row.metadata }}
                   </div>
                   <div class="kv" id="kv" align="right">
-                    <div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly"></div></div>
+                    <div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly"></div>
+                    <div>Org:<input type="text" id="kvorg"></div>
+                    <div>Date:<input type="text" id="kvdate"></div>
+                    <div>Tag:<input type="text" id="kvtag"></div>
+                    <div>Label:<input type="text" id="kvlabel"></div>
+                  </div>
                 </el-popover>
               </template>
               </el-table-column>
