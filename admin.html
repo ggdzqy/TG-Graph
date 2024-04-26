@@ -13,11 +13,8 @@
       /* 设置单元格的文字内容溢出时自动换行 */
       word-wrap: break-word;
     }
-    .el-table tr:hover{
-      background: #73818a; /*鼠标移动到当前行的颜色*/
-    }
     .el-table tr {
-	    background-color: #9ba6b8; /*单数行的颜色*/
+	    background-color: #a8adb4; /*单数行的颜色*/
     }
 
     </style>
@@ -73,7 +70,7 @@
           <template>
             <el-table
               :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-              :stripe="true"
+              :stripe true
               :header-cell-style="{fontWeight:'bold',fontSize:'13px',color:'#58595d'}"
               style="width: 100%">
               <el-table-column align="center" label="preview" prop="preview" width="160px">
@@ -121,8 +118,21 @@
             </el-table>
           </template>
         </el-main>
+
+        <el-dialog
+        title="提示"
+        :visible.sync="dialogVisible"
+        width="30%"
+        :before-close="handleClose">
+        <span>这是一段信息</span>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="handleSave(scope.$index,scope.row.name)">确 定</el-button>
+        </span>
+        </el-dialog>
     </el-container>
   </div>
+
 </body>
   <!-- import Vue before Element -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js" integrity="sha256-kXTEJcRFN330VirZFl6gj9+UM6gIKW195fYZeR3xDhc=" crossorigin="anonymous"></script>
@@ -144,9 +154,20 @@
           id: ''
         },
         search: '',
-        password:'123456'
+        password:'123456',
+        dialogVisible: false
       },
       methods: {
+      handleSave(name) {
+        this.$confirm('确认关闭？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+      },
+      handleEdit(name){
+        dialogVisible = true;
+      },
       handleCopy(name){
         // 创建一个文本元素
         var textElement = document.createElement('textarea');
@@ -257,31 +278,29 @@
         return this.push.apply(this, rest);
       };
       var requestOptions = {
-  method: 'GET',
-  redirect: 'follow',
-  //include authorization credientials
-  credentials: 'include'
-  
-};
+        method: 'GET',
+        redirect: 'follow',
+        //include authorization credientials
+        credentials: 'include'
+      };
 
 
-fetch("./api/manage/list", requestOptions)
-  //判断是否需要登录
-  .then(response => {
-    if(response.status==401){
-      alert("请先登录");
-      window.location.href="./api/manage/login";
-    }
-    else{
-      return response;
+      fetch("./api/manage/list", requestOptions)
+        //判断是否需要登录
+        .then(response => {
+          if(response.status==401){
+            alert("请先登录");
+            window.location.href="./api/manage/login";
+          }
+          else{
+            return response;
+          }
+      })
+      .then(response => response.text()) 
+      .then(result => {this.tableData=JSON.parse(result);console.log(result);this.Number=this.tableData.length})
+      .catch(error => {alert("An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
     }
   })
-  .then(response => response.text()) 
-  .then(result => {this.tableData=JSON.parse(result);console.log(result);this.Number=this.tableData.length})
-  .catch(error => {alert("An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
-
-    }
-    })
     
   </script>
 </html>
