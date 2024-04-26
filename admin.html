@@ -118,7 +118,12 @@
                   <div slot="reference" class="name-wrapper" style="Float:left">
                     {{ scope.row.metadata }}
                   </div>
-                  <div class="kv" id="kv" align="right">
+                  <div class="kv" id="kv" align="right" style="Float:left">
+                    <el-input
+                      value="{{ scope.row.metadata }}"
+                      v-model="input1"
+                      :disabled="true">
+                    </el-input>
                     <div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly" value="{{ scope.row.metadata }}"></div>
                     <div>Org:<input type="text" id="kvorg"></div>
                     <div>Date:<input type="text" id="kvdate"></div>
