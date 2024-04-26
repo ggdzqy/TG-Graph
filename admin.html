@@ -81,7 +81,7 @@
                   />
                 </template>
               </el-table-column>
-              <el-table-column label="name" prop="name">
+              <el-table-column label="name" prop="name" width="120px">
               </el-table-column>
               <el-table-column label="data" prop="data">
                 <template slot-scope="scope">
@@ -98,12 +98,12 @@
                   <!--<el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>-->
                 </template>
                 <template slot-scope="scope">
-                  <el-button type="success"
-                  @click="handleCopy(scope.row.name)">复制链接</el-button>
-                  <el-button type="primary"
-                    @click="handleWhite(scope.$index,scope.row.name)">白名单</el-button>
-                  <el-button type="info"
-                    @click="handleBlock(scope.$index,scope.row.name)">黑名单</el-button>
+                  <el-button type="success" icon="el-icon-document"
+                  @click="handleCopy(scope.row.name)"></el-button>
+                  <el-button type="primary" icon="el-icon-view"
+                    @click="handleWhite(scope.$index,scope.row.name)"></el-button>
+                  <el-button type="info" icon="el-icon-news"
+                    @click="handleBlock(scope.$index,scope.row.name)"></el-button>
                   <el-button type="danger" icon="el-icon-delete"
                     @click="handleDelete(scope.$index,scope.row.name)"></el-button>
                 </template>
