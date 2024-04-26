@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <!-- import CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.15.3/lib/theme-chalk/index.css" integrity="sha256-ghr1zmXTODLKl1HULQd6fq1MIe7m3FJiNTOCT8sddLM=" crossorigin="anonymous">
+  <style>
+    table td {
+      /* 设置单元格的文字内容溢出时自动换行 */
+      word-wrap: break-word;
+      /* 设置单元格的最大宽度为 200px */
+      max-width: 200px;
+    }
+    </style>
 </head>
 <body>
   <div id="app">
@@ -54,13 +62,10 @@
             </el-col>-->
           </el-row>
           <template>
-
-
-
-            <div
+            <el-table
               :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
               style="width: 100%">
-              <div label="preview" prop="preview" width="160px">
+              <el-table-column label="preview" prop="preview" width="160px">
                 <template slot-scope="scope">
                   <video v-if="scope.row.name.indexOf('.mp4')>0" style="width: 100%; height: 100%;" controls>
                     <source :src="'/file/'+scope.row.name" type="video/mp4">
@@ -75,13 +80,13 @@
                     lazy
                   />
                 </template>
-              </div>
-              <div
+              </el-table-column>
+              <el-table-column
                 label="name"
                 prop="name"
                 width="340px">
-              </div>
-              <div label="data" prop="data">
+              </el-table-column>
+              <el-table-column label="data" prop="data">
                 <template slot-scope="scope">
                 <el-popover trigger="hover" placement="top">
                   <p>{{ scope.row.metadata }}</p>
@@ -90,8 +95,8 @@
                   </div>
                 </el-popover>
               </template>
-              </div>
-              <div align="right" width="340px">
+              </el-table-column>
+              <el-table-column align="right" width="340px">
                 <template slot="header" slot-scope="scope">
                   <!--<el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>-->
                 </template>
@@ -105,8 +110,8 @@
                   <el-button type="danger" icon="el-icon-delete"
                     @click="handleDelete(scope.$index,scope.row.name)"></el-button>
                 </template>
-              </div>
-            </div>
+              </el-table-column>
+            </el-table>
           </template>
         </el-main>
     </el-container>
