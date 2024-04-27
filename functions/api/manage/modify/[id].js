@@ -12,7 +12,7 @@ export async function onRequestPost(context) {
 
     //{"ListType":"public","Label":"None3","TimeStamp":1712817387960,"Tag":"None2","Org":"1"}
     const url = new URL(request.url);
-    const id = url.searchParams.get("id")
+    const id = url.searchParams.get("id");
     const value = await env.img_url.getWithMetadata(id);
     if(value){
       //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
