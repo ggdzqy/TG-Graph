@@ -196,7 +196,8 @@
         console.log(JSON.stringify(data));
       },
       handleModify(key, data) {
-        console.log(JSON.stringify(data));
+        const senddata = data;
+        console.log(JSON.stringify(senddata));
         if (confirm("确认要存入修改记录吗? ")) {
           console.log("存入数据")
           var requestOptions = {
@@ -206,7 +207,7 @@
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(senddata),
           };
           fetch("./api/manage/modify/"+key, requestOptions)
               .then(response => response.text())

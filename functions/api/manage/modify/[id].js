@@ -13,18 +13,21 @@ export async function onRequestPost(context) {
     //console.log(params.id)
     //read the metadata
     //const value = await env.img_url.getWithMetadata(params.id);
-    console.log(params.id);
-    console.log(request.body);
 
+    const metadata = request.body;
+    var ret;
+    if (isPlainObject(metadata)) {
+      ret = JSON.stringify(metadata);
+    }
 
     //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
     //change the metadata
-    const metadata = JSON.parse(request.body);
+
     //await env.img_url.put(params.id,"",{metadata: metadata});
     //value.metadata.ListType = "public"
     //value.metadata.Tag = "None"
     //await env.img_url.put(params.id,"",{metadata: value.metadata});
-    const info = JSON.stringify(metadata);
+    const info = JSON.stringify({"length":metadata.length});
     return new Response(info);
   }
 
