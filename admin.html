@@ -201,11 +201,18 @@
         console.log("存入数据")
         var requestOptions = {
           method: 'POST',
+          redirect: 'follow',
+          headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          //include authorization credientials
+          credentials: 'include',
           body: JSON.stringify(data)
         };
         fetch("./api/manage/modify/"+key, requestOptions)
             .then(response => response.text())
-            .then(result => console.log(result))
+            .then(result => {console.log(result);})
             .catch(error =>  {alert("Modify-> An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
           
           } else {
