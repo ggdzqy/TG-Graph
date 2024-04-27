@@ -209,9 +209,9 @@
             //},
             //body: JSON.stringify(senddata),
           };
-          for (var key in data) {
-            senddata.push(`${key}=${data[key]}`)
-            console.log(key, data[key]);
+          for (var z in data) {
+            senddata.push(`${z}=${data[z]}`)
+            console.log(z, data[z]);
           }
           fetch("./api/manage/modify/"+key+"?"+senddata.join("&"), requestOptions)
               .then(response => response.text())
