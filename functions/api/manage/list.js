@@ -26,5 +26,4 @@ export async function onRequest(context) {
     //}
     const info = JSON.stringify(value.keys);
     return new Response(info);
-
   }
