@@ -14,17 +14,16 @@ export async function onRequest(context) {
     if(data){
       const value = await env.img_url.getWithMetadata(params.id);
       console.log(data)
-    }
+
 
     //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
     //change the metadata
-    //var metadata = JSON.parse(data)
+    var metadata = JSON.parse(data)
     //await env.img_url.put(params.id,"",{metadata: metadata});
     //value.metadata.ListType = "public"
     //value.metadata.Tag = "None"
     //await env.img_url.put(params.id,"",{metadata: value.metadata});
-    //const info = JSON.stringify(metadata);
-    //return new Response(info);
-    const info = JSON.stringify(params.id);
+    const info = JSON.stringify(metadata);
     return new Response(info);
+    }
   }
