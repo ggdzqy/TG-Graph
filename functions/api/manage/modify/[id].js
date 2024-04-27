@@ -13,13 +13,14 @@ export async function onRequestPost(context) {
     //console.log(params.id)
     //read the metadata
     //const value = await env.img_url.getWithMetadata(params.id);
+    var ret={};
 
-    const vdata = params.id.split("?")[1];
-    const vjson = JSON.parse(vdata);
-    // for (let [ksey, value] of metadata) { 
-    //   console.log(`${key} : ${value}`);  
-    //   ret.push(key, value)
-    // }
+    //const vdata = params.id.split("?")[1];
+    //const vjson = JSON.parse(data);
+    for (let [key, value] of data) { 
+      console.log(`${key} : ${value}`);  
+      ret[key] = value;
+    }
 
     //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
     //change the metadata
@@ -28,7 +29,7 @@ export async function onRequestPost(context) {
     //value.metadata.ListType = "public"
     //value.metadata.Tag = "None"
     //await env.img_url.put(params.id,"",{metadata: value.metadata});
-    const info = JSON.stringify(vjson);
+    const info = JSON.stringify(ret);
     return new Response(info);
   }
 
