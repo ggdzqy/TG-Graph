@@ -216,9 +216,8 @@
             }, 
             body: JSON.stringify(senddata)
           });
-          response.headers.forEach(
-            (value, key) => console.log(key, ':', value)
-          );
+          console.log(response.json())
+
           // fetch("./api/manage/modify/"+key, requestOptions)
           //     .then(response => console.log(response.text()))
           //     .then(result => console.log(result))
