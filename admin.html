@@ -103,14 +103,14 @@
               <el-table-column label="data" prop="data">
                 <template slot-scope="scope">
                 <el-popover 
-                popper-class="show-your-popover-name"
+                popper-class="show-your-name"
                 trigger="click" placement="top">
                   <!--<p>{{ scope.row.metadata }}</p>-->
                   <div slot="reference" class="name-wrapper" style="Float:left">
                     {{ scope.row.metadata }}
                   </div>
-                  <div class="kv" :id="scope.row.name" align="right" style="Float:left">
-                    <div>Name:<el-input autosize type="textarea" :disabled="true" v-model="scope.row.name">
+                  <div class="kv" :id="scope.row.name" align="left">
+                    <div><el-input autosize type="textarea" :disabled="true" v-model="scope.row.name">
                       <template slot="prepend">Name:</template></el-input></div>
                     <div>Org:<el-input autosize type="textarea" v-model="scope.row.metadata['Org']">
                       <template slot="prepend">Org:</template></el-input></div>
