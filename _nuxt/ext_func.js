@@ -14,7 +14,24 @@ function fakepath(srcpath){
     }
     return srcpath;
   }
-  
+
+  function GetDate(srcdate){
+      //get time
+      const today = new Date(srcdate);
+      //日期
+      var DD = String(today.getDate()).padStart(2, '0'); // 获取日
+      var MM = String(today.getMonth() + 1).padStart(2, '0'); //获取月份，1 月为 0
+      var yyyy = today.getFullYear(); // 获取年
+      // 时间
+      var hh =  String(today.getHours()).padStart(2, '0');       //获取当前小时数(0-23)
+      var mm = String(today.getMinutes()).padStart(2, '0');     //获取当前分钟数(0-59)
+      var ss = String(today.getSeconds()).padStart(2, '0');     //获取当前秒数(0-59)
+      var time_today = yyyy + '-' + MM + '-' + DD + ' ' + hh + ':' + mm + ':' + ss;
+      return time_today;
+  }
+
+
+
 $(function() {
     document.querySelector("body").innerHTML += `<div id="_topbox" style="display: flex; flex-direction: column; align-items: center; position: fixed; top: 15%; right: 1vh; z-index: 1000; background: white; padding:10px; border: 1px solid #c7cfd7; border-radius:5px;">
     <div id="_infobox"><a href="/admin">ADMIN</a></div>
@@ -42,7 +59,7 @@ $.createUploadInfoContainer = function(){
         document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT:</div>`
         //read cookie
         document.querySelector("#kvorg").value = document.getElementById("upFiles").files[0].name + "," + document.getElementById("upFiles").files[0].size;
-        document.querySelector("#kvdate").value = document.getElementById("upFiles").files[0].lastModifiedDate ?? $.cookie('kvdate') ?? "";
+        document.querySelector("#kvdate").value = GetDate(document.getElementById("upFiles").files[0].lastModifiedDate) ?? $.cookie('kvdate') ?? "";
         document.querySelector("#kvtag").value = $.cookie('kvtag') ?? "";
         document.querySelector("#kvlabel").value = $.cookie('kvlabel') ?? "";
 
