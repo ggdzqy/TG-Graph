@@ -23,7 +23,7 @@ export async function onRequestPost(context) {
     //value.metadata.ListType = "public"
     //value.metadata.Tag = "None"
     //await env.img_url.put(params.id,"",{metadata: value.metadata});
-    const info = JSON.stringify(metadata);
+    const info = JSON.stringify(data);
     return new Response(data);
     }
     else{
