@@ -16,11 +16,11 @@ export async function onRequestPost(context) {
 
     var ret = {};
 
-    const metadata = request.body;
-    for (let [key, value] of metadata) { 
-      console.log(`${key} : ${value}`);  
-      ret.push(key, value)
-    }
+    const metadata = data;//request.body;
+    // for (let [key, value] of metadata) { 
+    //   console.log(`${key} : ${value}`);  
+    //   ret.push(key, value)
+    // }
 
     //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
     //change the metadata
@@ -29,7 +29,7 @@ export async function onRequestPost(context) {
     //value.metadata.ListType = "public"
     //value.metadata.Tag = "None"
     //await env.img_url.put(params.id,"",{metadata: value.metadata});
-    const info = JSON.stringify({"length":metadata.length, "data":ret});
+    const info = JSON.stringify({"length":metadata.length, "data":metadata});
     return new Response(info);
   }
 
