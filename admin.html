@@ -196,7 +196,7 @@
         console.log(JSON.stringify(data));
       },
       handleModify(key,data) {
-        console.log(JSON.stringify(data));
+        console.log(data);
         if (confirm("确认要存入修改记录吗? ")) {
         console.log("存入数据")
         var requestOptions = {
@@ -204,7 +204,7 @@
           redirect: 'follow',
           //include authorization credientials
           credentials: 'include',
-          body: JSON.stringify(data)
+          body: data
         };
         fetch("./api/manage/modify/"+key, requestOptions)
             .then(response => response.text())
