@@ -33,16 +33,16 @@ $.createUploadInfoContainer = function(){
         <div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly"></div>
         <div>Org:<input type="text" id="kvorg"></div>
         <div>Date:<input type="text" id="kvdate"></div>
-        <div>Tag:<input type="text" id="kvtag"></div>
-        <div>Label:<input type="text" id="kvlabel"></div>
+        <div>Tag:<textarea id="kvtag"></textarea>
+        <div>Label:<textarea id="kvlabel"></textarea>
         <div><button id="kvclearcookie" type="button">清除Cookie</button>
         <button id="kvsave" type="button">提交</button>
         </div>`;
         document.querySelector("#kvname").value = document.querySelector("input.input-sm").value.split("/file/")[1];
         document.querySelector("div.area.done div.svg-wrapper.flex").innerHTML = `<div align="center">WAIT:</div>`
         //read cookie
-        document.querySelector("#kvorg").value = document.getElementById("upFiles").files[0].name ?? $.cookie('kvorg') ?? "";
-        document.querySelector("#kvdate").value = $.cookie('kvdate') ?? "";
+        document.querySelector("#kvorg").value = document.getElementById("upFiles").files[0].name + "," + document.getElementById("upFiles").files[0].size;
+        document.querySelector("#kvdate").value = document.getElementById("upFiles").files[0].lastModifiedDate ?? $.cookie('kvdate') ?? "";
         document.querySelector("#kvtag").value = $.cookie('kvtag') ?? "";
         document.querySelector("#kvlabel").value = $.cookie('kvlabel') ?? "";
 
