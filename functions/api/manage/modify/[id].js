@@ -16,7 +16,7 @@ export async function onRequestPost(context) {
 
     var ret = {};
 
-    const metadata = data;//request.body;
+    const metadata = request.body;
     // for (let [key, value] of metadata) { 
     //   console.log(`${key} : ${value}`);  
     //   ret.push(key, value)
