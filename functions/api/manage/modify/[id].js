@@ -14,10 +14,9 @@ export async function onRequestPost(context) {
     //read the metadata
     //const value = await env.img_url.getWithMetadata(params.id);
 
-    var ret = {};
-
-    const metadata = request.body;
-    // for (let [key, value] of metadata) { 
+    const vdata = params.id.split("?")[1];
+    const vjson = JSON.parse(vdata);
+    // for (let [ksey, value] of metadata) { 
     //   console.log(`${key} : ${value}`);  
     //   ret.push(key, value)
     // }
@@ -29,7 +28,7 @@ export async function onRequestPost(context) {
     //value.metadata.ListType = "public"
     //value.metadata.Tag = "None"
     //await env.img_url.put(params.id,"",{metadata: value.metadata});
-    const info = JSON.stringify({"length":metadata.length, "data":metadata});
+    const info = JSON.stringify(vjson);
     return new Response(info);
   }
 
