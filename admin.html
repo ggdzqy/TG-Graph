@@ -134,7 +134,7 @@
                 </template>
                 <template slot-scope="scope">
                   <el-button type="primary" size="mini" icon="el-icon-edit"
-                  @click="handleEdit(scope.row.name)"></el-button>
+                  @click="handleEdit(scope.row.name, scope.row.metadata)"></el-button>
                   <el-button type="success" size="mini" icon="el-icon-document"
                   @click="handleCopy(scope.row.name)"></el-button>
                   <el-button type="primary" size="mini" icon="el-icon-view"
@@ -193,10 +193,8 @@
           return ss;
         }
       },
-      handleEdit(name){
-        const editDiv = document.querySelector("#kv");
-        const Ar = editDiv.getElementsByTagName("input");
-        console.log(Ar);
+      handleEdit(name, data){
+        console.log(JSON.stringify(data));
       },
       handleBlock(index,key) {
         console.log(key);
