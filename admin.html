@@ -196,33 +196,33 @@
         console.log(JSON.stringify(data));
       },
       handleModify(key, data) {
-        const senddata = data;
-        console.log(JSON.stringify(senddata));
+        const senddata = [];
+        //console.log(JSON.stringify(senddata));
         if (confirm("确认要存入修改记录吗? ")) {
           console.log("存入数据")
           var requestOptions = {
-            method: "POST", // or 'PUT'
+            method: "GET", // or 'PUT'
             redirect: "follow",
             credentials: 'include',
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(senddata),
+            //headers: {
+            //  "Content-Type": "application/json",
+            //},
+            //body: JSON.stringify(senddata),
           };
-          // for (let [key, value] of metadata) { 
-          //   console.log(`${key} : ${value}`);  
-          //   ret.push(key, value)
-          // }
+          for (let [key, value] of data) { 
+            console.log(`${key} : ${value}`);
+            senddata.push(`${key}=${value}`)
+          }
           // const response = fetch("./api/manage/modify/"+key, {
           //   method: 'POST',
-          //   headers: {
+          //   headers: {s
           //   'Content-Type': 'application/json;charset=utf-8'
           //   }, 
           //   body: JSON.stringify(senddata)
           // });
           // console.log(response.json())
 
-          fetch("./api/manage/modify/"+key, requestOptions)
+          fetch("./api/manage/modify/"+key+"?"+senddata.join("&"), requestOptions)
               .then(response => response.text())
               .then(result => {console.log(result)})
               .catch(error =>  {alert("Modify-> An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
