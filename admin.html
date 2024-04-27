@@ -17,16 +17,14 @@
 	    background-color: #c9c9c9; /*单数行的颜色*/
     }
     .show-your-name {
-      max-width: 40vh !important;
-      background-color: #b6b6b6;
+      max-width: 380px !important;
       border-bottom-color: #777;
       border-top-color: #777;
     }
     .el-popover.show-your-name .popper__arrow {
-      background-color: #b6b6b6;
       border-bottom-color: #777;
       border-top-color: #777;
-      left: 92% !important;
+      left: 10% !important;
     }
 
   </style>
@@ -81,7 +79,7 @@
           </el-row>
           <template>
             <el-table
-              :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+              :data="tableData.filter(data => !search || data.data.toLowerCase().includes(search.toLowerCase()))"
               :stripe="true"
               :header-cell-style="{fontWeight:'bold',fontSize:'13px',color:'#58595d'}"
               style="width: 100%">
@@ -113,17 +111,17 @@
                     {{ scope.row.metadata }}
                   </div>
                   <div class="kv" :id="scope.row.name" align="left">
-                    <div><el-input autosize type="textarea" :disabled="true" v-model="scope.row.name">
+                    <div><el-input autosize :disabled="true" v-model="scope.row.name">
                       <template slot="prepend">Name:</template></el-input></div>
-                    <div>Org:<el-input autosize type="textarea" v-model="scope.row.metadata['Org']">
+                    <div>Org:<el-input autosize v-model="scope.row.metadata['Org']">
                       <template slot="prepend">Org:</template></el-input></div>
-                    <div>Date:<el-input autosize type="textarea" v-model="scope.row.metadata['TimeStamp']">
+                    <div>Date:<el-input autosize v-model="scope.row.metadata['TimeStamp']">
                       <template slot="prepend">Date:</template></el-input></div>
                     <div>Tag:<el-input :autosize="{ minRows: 2, maxRows: 4}" type="textarea" :rows="2" v-model="scope.row.metadata['Tag']">
                       <template slot="prepend">Tag:</template></el-input></div>
                     <div>Label:<el-input :autosize="{ minRows: 2, maxRows: 4}" type="textarea" :rows="2" v-model="scope.row.metadata['Label']">
                       <template slot="prepend">Label:</template></el-input></div>
-                    <div><el-button type="primary" size="mini" icon="el-icon-edit"
+                    <div align="right" style="margin:10px 0 0 0"><el-button type="primary" size="mini" icon="el-icon-edit"
                     @click="handleEdit(scope.$index, scope.row.metadata)"></el-button></div>
                   </div>
                 </el-popover>
@@ -187,12 +185,6 @@
         document.execCommand('copy');
         // 移除文本元素
         document.body.removeChild(textElement);
-      },
-      getString(name){
-        var ss = JSON.parse(name);
-        if(ss){
-          return ss;
-        }
       },
       handleEdit(index, data){
         //if(HTMLCollection){

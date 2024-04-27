@@ -13,5 +13,4 @@ export async function onRequest(context) {
     await env.img_url.delete(params.id);
     const info = JSON.stringify(params.id);
     return new Response(info);
-
   }

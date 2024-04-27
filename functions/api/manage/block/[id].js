@@ -19,5 +19,4 @@ export async function onRequest(context) {
     await env.img_url.put(params.id,"",{metadata: value.metadata});
     const info = JSON.stringify(value.metadata);
     return new Response(info);
-
   }
