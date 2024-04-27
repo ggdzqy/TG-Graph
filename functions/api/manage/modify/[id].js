@@ -12,13 +12,14 @@ export async function onRequest(context) {
     //console.log(params.id)
     //read the metadata
     const value = await env.img_url.getWithMetadata(params.id);
-    console.log(JSON.stringify(data))
+    console.log(data)
     //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
     //change the metadata
+    var metadata = JSON.parse(data)
+    await env.img_url.put(params.id,"",{metadata: metadata});
     //value.metadata.ListType = "public"
     //value.metadata.Tag = "None"
     //await env.img_url.put(params.id,"",{metadata: value.metadata});
-    //const info = JSON.stringify(value.metadata);
-    //return new Response(info);
-
+    const info = JSON.stringify(metadata);
+    return new Response(info);
   }

@@ -121,7 +121,7 @@
                     <div>Label:<el-input :autosize="{ minRows: 2, maxRows: 4}" type="textarea" :rows="2" v-model="scope.row.metadata['Label']">
                       </el-input></div>
                     <div align="right" style="margin:10px 0 0 0"><el-button type="primary" size="mini" icon="el-icon-edit"
-                    @click="handleEdit(scope.$index, scope.row.metadata)"></el-button></div>
+                    @click="handleModify(scope.$index, scope.row.metadata)"></el-button></div>
                   </div>
                 </el-popover>
               </template>
@@ -205,8 +205,8 @@
         };
         fetch("./api/manage/modify/"+key, requestOptions)
             .then(response => response.text())
-            .then(result => {console.log(result);this.tableData[index].metadata=result;})
-            .catch(error =>  {alert("An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
+            .then(result => {console.log(result);})
+            .catch(error =>  {alert("Modify-> An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
           
           } else {
           console.log("No")
@@ -227,7 +227,7 @@
           .then(response => response.text())
           .then(result => {console.log(result);
             this.tableData[index].metadata=result;})
-          .catch(error =>  {alert("An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
+          .catch(error =>  {alert("Block-> An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
         
         } else {
         console.log("No")
@@ -247,7 +247,7 @@
         fetch("./api/manage/delete/"+key, requestOptions)
           .then(response => response.text())
           .then(result => {console.log(result);this.tableData.remove(index);})
-          .catch(error =>  {alert("An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
+          .catch(error =>  {alert("Delete-> An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
         
         } else {
         console.log("No")
@@ -266,7 +266,7 @@
       fetch("./api/manage/white/"+key, requestOptions)
           .then(response => response.text())
           .then(result => {console.log(result);this.tableData[index].metadata=result;})
-          .catch(error =>  {alert("An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
+          .catch(error =>  {alert("Public-> An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
         
         } else {
         console.log("No")
@@ -282,8 +282,8 @@
       };
       fetch("./api/manage/reload/"+key, requestOptions)
           .then(response => response.text())
-          .then(result => {console.log(result);this.tableData[index].metadata=result;})
-          .catch(error =>  {alert("An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
+          .then(result => {console.log(result);this.tableData[index].metadata=JSON.parse(result);})
+          .catch(error =>  {alert("Reload-> An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
     },
     handleLogout(){
       window.location.href="./api/manage/logout";
