@@ -17,9 +17,8 @@
 	    background-color: #c9c9c9; /*单数行的颜色*/
     }
     .show-your-name {
-      max-width: 380px !important;
-      border-bottom-color: #777;
-      border-top-color: #777;
+      min-width: 380px !important;
+      border-color: #777;
     }
     .el-popover.show-your-name .popper__arrow {
       border-bottom-color: #777;
@@ -79,7 +78,7 @@
           </el-row>
           <template>
             <el-table
-              :data="tableData.filter(data => !search || data.data.toLowerCase().includes(search.toLowerCase()))"
+              :data="tableData.filter(data => !search || JSON.stringify(data).includes(search.toLowerCase()))"
               :stripe="true"
               :header-cell-style="{fontWeight:'bold',fontSize:'13px',color:'#58595d'}"
               style="width: 100%">
