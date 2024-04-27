@@ -122,9 +122,9 @@
                     <div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly" v-model="scope.row.name"></div>
                     <div>Org:<input type="text" id="kvorg" v-model="scope.row.metadata['Org']"></div>
                     <div>Date:<input type="text" id="kvdate" v-model="scope.row.metadata['TimeStamp']"></div>
-                    <div>Tag:<input type="text" id="kvtag" v-model="scope.row.metadata['Tag']"></div>
-                    <div>Label:<input type="text" id="kvlabel" v-model="scope.row.metadata['Label']"></div>
-                    <div></div><el-button type="primary" size="mini" icon="el-icon-view"
+                    <div>Tag:<input type="textarea" :rows="2" id="kvtag" v-model="scope.row.metadata['Tag']"></div>
+                    <div>Label:<input type="textarea" :rows="2" id="kvlabel" v-model="scope.row.metadata['Label']"></div>
+                    <div></div><el-button type="primary" size="mini" icon="el-icon-edit"
                     @click="handleEdit(scope.$index, scope.row.metadata)"></el-button></div>
                   </div>
                 </el-popover>
