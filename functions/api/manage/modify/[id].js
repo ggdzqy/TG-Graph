@@ -1,4 +1,4 @@
-export async function onRequest(context) {
+export async function onRequestPost(context) {
     // Contents of context object
     const {
       request, // same as existing Worker API
@@ -28,6 +28,6 @@ export async function onRequest(context) {
     }
     else{
       console.log("data error");
-      
+
     }
   }
