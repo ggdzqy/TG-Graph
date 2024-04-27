@@ -8,6 +8,7 @@ export async function onRequestPost(context) {
       next, // used for middleware or to fetch assets
       data, // arbitrary space for passing data between middlewares
     } = context;
+    context.request;
     //console.log(env)
     //console.log(params.id)
     //read the metadata
