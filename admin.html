@@ -196,7 +196,8 @@
         console.log(JSON.stringify(data));
       },
       handleModify(key, data) {
-        console.log(JSON.stringify(data));
+        const jsondata = JSON.stringify(data);
+        console.log(jsondata);
         if (confirm("确认要存入修改记录吗? ")) {
           console.log("存入数据")
           var requestOptions = {
@@ -207,10 +208,10 @@
             },
             //include authorization credientials
             credentials: 'include',
-            body: JSON.stringify(data),
+            body: jsondata,
           };
           fetch("./api/manage/modify/"+key, requestOptions)
-              .then(response => response.json())
+              .then(response => response.text())
               .then(result => {console.log("Success:", result);})
               .catch(error =>  {alert("Modify-> An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
           } else {
