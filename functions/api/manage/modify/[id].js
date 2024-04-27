@@ -18,7 +18,7 @@ export async function onRequestPost(context) {
 
     //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
     //change the metadata
-    const metadata = JSON.parse(data)
+    const metadata = data
     //await env.img_url.put(params.id,"",{metadata: metadata});
     //value.metadata.ListType = "public"
     //value.metadata.Tag = "None"
