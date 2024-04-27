@@ -14,15 +14,16 @@ export async function onRequest(context) {
     const id = url.searchParams.get("id");
     const value = await env.img_url.getWithMetadata(id);
     if(value){
-        //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
         //change the metadata
+        value.metadata.Org = url.searchParams.get("Org")
+        value.metadata.TimeStamp = url.searchParams.get("TimeStamp")
         value.metadata.Tag = url.searchParams.get("Tag")
         value.metadata.Label = url.searchParams.get("Label")
         await env.img_url.put(id,"",{metadata: value.metadata});
         const info = JSON.stringify(value.metadata);
         return new Response(info);
     }
-    return "modify ok"
+    return "modify failed"
 
   }
 
