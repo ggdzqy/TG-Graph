@@ -119,12 +119,12 @@
                     {{ scope.row.metadata }}
                   </div>
                   <div class="kv" :id="scope.row.name" align="right" style="Float:left">
-                    <div>Name:<el-input autosize :disabled="true" v-model="scope.row.name"></el-input></div>
-                    <div>Org:<el-input autosize v-model="scope.row.metadata['Org']"></el-input></div>
-                    <div>Date:<el-input autosize v-model="scope.row.metadata['TimeStamp']"></el-input></div>
-                    <div>Tag:<el-input autosize type="textarea" :rows="2" v-model="scope.row.metadata['Tag']"></el-input></div>
-                    <div>Label:<el-input autosize type="textarea" :rows="2" v-model="scope.row.metadata['Label']"></el-input></div>
-                    <div></div><el-button type="primary" size="mini" icon="el-icon-edit"
+                    <div class="demo-input-suffix">Name:<el-input autosize :disabled="true" v-model="scope.row.name"></el-input></div>
+                    <div class="demo-input-suffix">Org:<el-input autosize v-model="scope.row.metadata['Org']"></el-input></div>
+                    <div class="demo-input-suffix">Date:<el-input autosize v-model="scope.row.metadata['TimeStamp']"></el-input></div>
+                    <div class="demo-input-suffix">Tag:<el-input autosize type="textarea" :rows="2" v-model="scope.row.metadata['Tag']"></el-input></div>
+                    <div class="demo-input-suffix">Label:<el-input autosize type="textarea" :rows="2" v-model="scope.row.metadata['Label']"></el-input></div>
+                    <div class="demo-input-suffix"><el-button type="primary" size="mini" icon="el-icon-edit"
                     @click="handleEdit(scope.$index, scope.row.metadata)"></el-button></div>
                   </div>
                 </el-popover>
