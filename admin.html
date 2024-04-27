@@ -196,19 +196,15 @@
         console.log(JSON.stringify(data));
       },
       handleModify(key, data) {
-        const jsondata = JSON.stringify(data);
-        console.log(jsondata);
+        console.log(JSON.stringify(data));
         if (confirm("确认要存入修改记录吗? ")) {
           console.log("存入数据")
           var requestOptions = {
-            method: 'POST',
-            redirect: 'follow',
+            method: "POST", // or 'PUT'
             headers: {
               "Content-Type": "application/json",
             },
-            //include authorization credientials
-            credentials: 'include',
-            body: jsondata,
+            body: JSON.stringify(data),
           };
           fetch("./api/manage/modify/"+key, requestOptions)
               .then(response => response.text())
