@@ -209,19 +209,10 @@
             //},
             //body: JSON.stringify(senddata),
           };
-          for (let [key, value] of data) { 
-            console.log(`${key} : ${value}`);
-            senddata.push(`${key}=${value}`)
+          for (var key in data) {
+            senddata.push(`${key}=${data[key]}`)
+            console.log(key, data[key]);
           }
-          // const response = fetch("./api/manage/modify/"+key, {
-          //   method: 'POST',
-          //   headers: {s
-          //   'Content-Type': 'application/json;charset=utf-8'
-          //   }, 
-          //   body: JSON.stringify(senddata)
-          // });
-          // console.log(response.json())
-
           fetch("./api/manage/modify/"+key+"?"+senddata.join("&"), requestOptions)
               .then(response => response.text())
               .then(result => {console.log(result)})
