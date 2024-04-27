@@ -12,9 +12,9 @@ export async function onRequestPost(context) {
     //console.log(env)
     //console.log(params.id)
     //read the metadata
-    if(request.body){
-      //const value = await env.img_url.getWithMetadata(params.id);
-      console.log(request.body)
+    //const value = await env.img_url.getWithMetadata(params.id);
+    console.log(params.id);
+    console.log(request.body);
 
 
     //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
