@@ -1,4 +1,4 @@
-export async function onRequest(context) {
+export async function onRequestPost(context) {
     // Contents of context object
     const {
       request, // same as existing Worker API
@@ -11,18 +11,22 @@ export async function onRequest(context) {
     //console.log(env)
     //console.log(params.id)
     //read the metadata
+    if(request.body){
+      //const value = await env.img_url.getWithMetadata(params.id);
+      console.log(request.body)
 
-    //const value = await env.img_url.getWithMetadata(params.id);
 
     //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
     //change the metadata
-    const metadata = data;
+    const metadata = JSON.parse(request.body);
     //await env.img_url.put(params.id,"",{metadata: metadata});
     //value.metadata.ListType = "public"
     //value.metadata.Tag = "None"
     //await env.img_url.put(params.id,"",{metadata: value.metadata});
-    //const info = JSON.stringify(data);
-    const info = String(params.id);
+    const info = JSON.stringify(metadata);
     return new Response(info);
-
+    }
+    else{
+      console.log("data error");
+    }
   }
