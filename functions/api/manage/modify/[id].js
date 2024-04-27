@@ -26,9 +26,5 @@ export async function onRequestPost(context) {
     //await env.img_url.put(params.id,"",{metadata: value.metadata});
     const info = JSON.stringify(metadata);
     return new Response(info);
-    }
-    else{
-      console.log("data error");
-    }
   }
 
