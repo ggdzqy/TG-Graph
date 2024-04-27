@@ -8,7 +8,7 @@ export async function onRequestPost(context) {
       next, // used for middleware or to fetch assets
       data, // arbitrary space for passing data between middlewares
     } = context;
-    context.request;
+    //context.request;
 
     //{"ListType":"public","Label":"None3","TimeStamp":1712817387960,"Tag":"None2","Org":"1"}
     const url = new URL(request.url);
@@ -17,7 +17,7 @@ export async function onRequestPost(context) {
     //change the metadata
     value.metadata.Tag = url.searchParams.get("Tag")
     value.metadata.Label = url.searchParams.get("Label")
-    
+
     await env.img_url.put(params.id,"",{metadata: value.metadata});
     const info = JSON.stringify(value.metadata);
     return new Response(info);
