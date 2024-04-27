@@ -120,10 +120,10 @@
                   </div>
                   <div class="kv" id="kv" align="right" style="Float:left">
                     <div>Name:<input class="readonly" id="kvname" type="text" readonly="readonly" v-bind:value="scope.row.name"></div>
-                    <div>Org:<input type="text" id="kvorg" :value="scope.row.metadata"></div>
-                    <div>Date:<input type="text" id="kvdate"></div>
-                    <div>Tag:<input type="text" id="kvtag"></div>
-                    <div>Label:<input type="text" id="kvlabel"></div>
+                    <div>Org:<input type="text" id="kvorg" :value="scope.row.metadata['Org']"></div>
+                    <div>Date:<input type="text" id="kvdate" :value="scope.row.metadata['TimeStamp']"></div>
+                    <div>Tag:<input type="text" id="kvtag" :value="scope.row.metadata['Tag']"></div>
+                    <div>Label:<input type="text" id="kvlabel" :value="scope.row.metadata['Label']"></div>
                   </div>
                 </el-popover>
               </template>
