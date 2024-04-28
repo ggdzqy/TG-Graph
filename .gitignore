@@ -1,1 +1,5 @@
-dogit.bat
+*.bat
+*.cmd
+*.sh
+.DS_Store
+

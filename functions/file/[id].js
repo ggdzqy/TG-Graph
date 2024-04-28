@@ -11,8 +11,8 @@ export async function onRequest(context) {
   context.request;
   const url = new URL(request.url);
 
-  const RedirectURL404 = "https://static.memoo.top/imgs/404.png";
-  const RedirectURL302 = "https://static.memoo.top/imgs/null.png";
+  const RedirectURL404 = env.RESOUCE404 ?? "https://static.memoo.top/imgs/404.png";
+  const RedirectURL302 = env.RESOUCE302 ?? "https://static.memoo.top/imgs/null.png";
 
   const allowedDomains = env.ALLOWED_DOMAINS;
   const thisreferer = request.headers.get('referer') ?? "http://noreferer";
@@ -70,7 +70,7 @@ export async function onRequest(context) {
               return Response.redirect(url.origin + "/block-img.html", 302);
             } else {
               return Response.redirect(
-                "https://static-res.mixart.top/imgs/question.png",
+                RedirectURL404,
                 302
               );
             }
