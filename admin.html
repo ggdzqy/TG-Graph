@@ -44,13 +44,7 @@
      <span style="
      position: absolute;
      right: 0px;
-      " v-if="showLogoutButton">
-      <el-button
-                    size="mini"
-                    type="info"
-                    @click="handleHome()">首页</el-button></span></div> 
-        </el-header>
-        <el-button
+      " v-if="showLogoutButton"><el-button
                     size="mini"
                     type="info"
                     @click="handleLogout()">退出登录</el-button></span></div> 
@@ -302,10 +296,8 @@
           .catch(error =>  {alert("Reload-> An error occurred while synchronizing data with the server, please check the network connection");console.log('error', error)});
     },
     handleLogout(){
-      window.location.href="./api/manage/logout";
-    },
-    handleHome(){
-      window.location.href="/";
+      //window.location.href="./api/manage/logout";
+      window.location.href="/"
     }
     },
       
