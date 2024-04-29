@@ -39,7 +39,7 @@ $(function() {
 })
 
 $.clearUploadInfoContainer = function(){
-    document.querySelector("#_infobox").innerHTML = `WAIT`;
+    document.querySelector("#_infobox").innerHTML = `<a href="/admin">ADMIN</a>`;
     console.log("createUploadInfoContainer cleared.")
 }
 
