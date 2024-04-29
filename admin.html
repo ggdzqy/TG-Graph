@@ -44,7 +44,13 @@
      <span style="
      position: absolute;
      right: 0px;
-      " v-if="showLogoutButton"><el-button
+      " v-if="showLogoutButton">
+      <el-button
+                    size="mini"
+                    type="info"
+                    @click="handleHome()">首页</el-button></span></div> 
+        </el-header>
+        <el-button
                     size="mini"
                     type="info"
                     @click="handleLogout()">退出登录</el-button></span></div> 
@@ -297,6 +303,9 @@
     },
     handleLogout(){
       window.location.href="./api/manage/logout";
+    },
+    handleHome(){
+      window.location.href="/";
     }
     },
       
